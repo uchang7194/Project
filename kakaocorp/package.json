@@ -1,0 +1,19 @@
+{
+  "name": "kakaocorp",
+  "version": "1.0.0",
+  "description": "카카오 사이트 만들기",
+  "main": "index.js",
+  "scripts": {
+    "watch": "node-sass -w scss/stylesheet.scss -o css/ --output-style expanded css/source_map/ --source-map true"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uchang7194/project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/uchang7194/project/issues"
+  },
+  "homepage": "https://github.com/uchang7194/project#readme"
+}

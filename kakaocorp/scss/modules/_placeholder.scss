@@ -1,0 +1,24 @@
+%floating-el {
+  &::after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+  & > * {
+    float: left;
+  }
+}
+
+%text_hovering {
+  &::before {
+    content: '';
+    position: absolute; 
+    width: 100%;
+    height: 3px;
+    background: #EEEE23;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: -1;
+  }
+}

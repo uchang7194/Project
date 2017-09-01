@@ -4,9 +4,288 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <meta name="viewport" content="user-scalable=no, initial-scale=1.0, widh=device-width">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="description" content="카카오회사 포트폴리오 가짜">
+  <link rel="stylesheet" href="./css/stylesheet.css">
+  <title>카카오</title>
 </head>
 <body>
-  
+  <div class="wrapper">
+    <div class="side-menu">
+      <!-- s:utill-list -->
+      <ul class="utill-list">
+        <li>
+          <a href="#">
+            <span>sitemap</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span>english</span>
+          </a>
+        </li>
+      </ul>
+      <!-- e:utill-list -->
+      <!-- s:logo -->
+      <div class="logo-box">
+        <a href="#">
+          <img src="./assets/logo.png" alt="카카오 로고">
+        </a>
+      </div>
+      <!-- e:logo -->
+      <!-- s:menu-list -->
+      <ul class="menu-list">
+        <li>
+          <a href="#" class="title" role="button">
+            <span class="title-context">
+              카카오
+            </span>
+          </a>
+          <ul class="submenu">
+            <li>
+              <a href="#">
+                <span>비전</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span>연혁</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span>서비스 소개</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span>사업현황</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span>오시는 길</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#" class="title" role="button">
+            <span class="title-context">
+              투자정보
+            </span>
+          </a>
+          <ul class="submenu">
+            <li>
+              <a href="#">
+                <span>경영정보</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span>공시정보</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span>주가정보</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span>재무정보</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span>IR일정</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span>IR자료실</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span>증권사 커버리지</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span>공고사항</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#" class="title">
+            <span class="title-context">
+              인재영입
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="title" role="button">
+            <span class="title-context">
+              새소식
+            </span>
+          </a>
+          <ul class="submenu">
+            <li>
+              <a href="#">
+                <span>보도자료</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span>브랜드 영상</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span>미디어 행사</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#" class="title" role="button">
+            <span class="title-context">
+              고객문의
+            </span>
+          </a>
+          <ul class="submenu">
+            <li>
+              <a href="#">
+                <span>광고 및 제휴</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span>카카오 고객센터</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span>다음 고객센터</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#" class="title">
+            <span class="title-context">
+              프라이버시 정책
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="title" role="button">
+            <span class="title-context">
+              카카오 AI
+            </span>
+          </a>
+          <ul class="submenu">
+            <li>
+              <a href="#">
+                <span>바라보는 세상</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span>함께하는 세상</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span>Hey Kakao</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <script>
+        (function(global){
+          var menu_list, lists, sub_lists;
+
+          function init() {
+            menu_list = document.querySelector('.menu-list');
+            lists = menu_list.querySelectorAll('.title');
+            sub_lists = menu_list.querySelectorAll('.submenu');
+            bind();
+          }
+          
+          function bind() {
+            menu_list.addEventListener('click', function(e) {
+              
+              e.stopPropagation();
+              
+              var target = e.target,
+                  class_name = target.getAttribute('class');
+
+              if(class_name === 'title' || class_name === 'title-context') {
+                var submenu = null;
+
+                resetClass(sub_lists, 'submenu');
+                resetClass(menu_list, 'menu-list');
+                
+                console.log('target', target);
+                submenu = findParentNode(target, 2).querySelector('submenu');
+
+                if(menu_list.getAttribute('class').indexOf('actived-menu') < 0) {
+                  addClass('actived-menu');
+                  global.setTimeout(function(){
+                    submenu && submenu.setAttribute('class', 'submenu actived-submenu');
+                  }, 500);
+                } else {
+                  submenu && submenu.setAttribute('class', 'submenu actived-submenu');
+                }
+              }
+            });
+          }
+
+          function addClass(class_name, el) {
+
+            el = el || menu_list;
+
+            if(Element.classList) {
+              el.classList.add(class_name);
+            } else {
+              var class_temp = el.getAttribute('class');
+              el.setAttribute('class', class_temp + ' ' + class_name);
+            }
+          }
+
+          function resetClass(els, class_name) {
+            var length = els.length;
+            
+            if(length === 1) {
+              console.log('els', els);
+              console.log('class_name', class_name);
+              els.setAttribute('class', class_name);
+              return;
+            }
+            for(var i = 0; i < length; i++) {
+              els[i].setAttribute('class', class_name);
+            }
+          }
+          
+          function findParentNode(el, count) {
+            for(var i = 0; i < count; i++) {
+              el = el.parentNode;
+            }
+            return el;
+          }
+          init();
+        }(window));
+      </script>
+      <!-- e:menu-list -->
+    </div>
+    <div class="side-content">
+      
+    </div>
+  </div>
 </body>
 </html>
