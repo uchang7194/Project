@@ -1,1 +1,21 @@
-@import url('//cdn.jsdelivr.net/font-kopub/1.0/kopubdotum.css');
+@font-face {
+  font-family: 'Dotum Light';
+  src: url('../assets/fonts/KoPubDotumLight.ttf') format('truetype'),
+       url('../assets/fonts/KoPubDotumLight.otf') format('opentype'),
+       url('../assets/fonts/KoPubDotumLight.woff') format('woff'),
+       url('../assets/fonts/KoPubDotumLight.svg') format('svg');
+}
+@font-face {
+  font-family: 'Dotum Medium';
+  src: url('../assets/fonts/KoPubDotumMedium.ttf') format('truetype'),
+       url('../assets/fonts/KoPubDotumMedium.otf') format('opentype'),
+       url('../assets/fonts/KoPubDotumMedium.woff') format('woff'),
+       url('../assets/fonts/KoPubDotumMedium.svg') format('svg');
+}
+@font-face {
+  font-family: 'Dotum Bold';
+  src: url('../assets/fonts/KoPubDotumBold.ttf') format('truetype'),
+       url('../assets/fonts/KoPubDotumBold.otf') format('opentype'),
+       url('../assets/fonts/KoPubDotumBold.woff') format('woff'),
+       url('../assets/fonts/KoPubDotumBold.svg') format('svg');
+}

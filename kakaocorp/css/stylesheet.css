@@ -1,15 +1,15 @@
-@import url("//cdn.jsdelivr.net/font-kopub/1.0/kopubdotum.css");
-.wrapper::after, .utill-list::after {
+.utill-list::after, .footer-list::after {
   content: '';
   display: block;
   clear: both;
 }
 
-.wrapper > *, .utill-list > * {
+.utill-list > *, .footer-list > * {
   float: left;
 }
 
-.utill-list a:hover::before, .menu-list .title-context:hover::before, .menu-list .title-context.actived-title-context::before {
+.utill-list a:hover::before, .utill-list a:focus::before, .menu-list a:hover .title-context::before,
+.menu-list a:focus .title-context::before, .menu-list .title-context.actived-title-context::before {
   content: '';
   position: absolute;
   width: 100%;
@@ -21,6 +21,21 @@
   z-index: -1;
 }
 
+@font-face {
+  font-family: 'Dotum Light';
+  src: url("../assets/fonts/KoPubDotumLight.ttf") format("truetype"), url("../assets/fonts/KoPubDotumLight.otf") format("opentype"), url("../assets/fonts/KoPubDotumLight.woff") format("woff"), url("../assets/fonts/KoPubDotumLight.svg") format("svg");
+}
+
+@font-face {
+  font-family: 'Dotum Medium';
+  src: url("../assets/fonts/KoPubDotumMedium.ttf") format("truetype"), url("../assets/fonts/KoPubDotumMedium.otf") format("opentype"), url("../assets/fonts/KoPubDotumMedium.woff") format("woff"), url("../assets/fonts/KoPubDotumMedium.svg") format("svg");
+}
+
+@font-face {
+  font-family: 'Dotum Bold';
+  src: url("../assets/fonts/KoPubDotumBold.ttf") format("truetype"), url("../assets/fonts/KoPubDotumBold.otf") format("opentype"), url("../assets/fonts/KoPubDotumBold.woff") format("woff"), url("../assets/fonts/KoPubDotumBold.svg") format("svg");
+}
+
 html, body {
   margin: 0;
 }
@@ -30,7 +45,7 @@ html {
 }
 
 body {
-  font-family: 'KoPub Dotum', sans-serif;
+  font-family: 'Dotum Light', sans-serif;
   font-size: 1.4rem;
 }
 
@@ -48,15 +63,22 @@ ul li {
   list-style: none;
 }
 
+p {
+  margin: 0;
+}
+
 .side-menu {
-  position: relative;
+  position: fixed;
+  left: 0;
+  top: 0;
   width: 319px;
   height: 100vh;
-  background: lightblue;
+  border-right: 1px solid #ddd;
 }
 
 .utill-list {
   position: absolute;
+  z-index: 9999;
   top: 20px;
   left: 50%;
   transform: translateX(-50%);
@@ -74,23 +96,31 @@ ul li {
   position: relative;
 }
 
-.utill-list a:hover::before {
+.utill-list a:hover::before, .utill-list a:focus::before {
   top: 65%;
 }
 
-.utill-list a:hover span {
+.utill-list a:hover span, .utill-list a:focus span {
   color: #202020;
 }
 
 .utill-list span {
   font-size: 0.9rem;
   font-weight: bolder;
-  color: #949191;
+  color: #777;
   text-transform: uppercase;
 }
 
+.side-menu-content {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  margin-top: -400px;
+  padding-top: 150px;
+  transition: all 0.2s;
+}
+
 .logo-box {
-  padding-top: 70px;
   text-align: center;
 }
 
@@ -116,20 +146,22 @@ ul li {
   transition: all .5s ease-out;
 }
 
+.menu-list a:hover .title-context,
+.menu-list a:focus .title-context {
+  color: #202020;
+}
+
+.menu-list a:hover .title-context::before,
+.menu-list a:focus .title-context::before {
+  top: initial;
+  bottom: 0;
+}
+
 .menu-list .title-context {
   position: relative;
   letter-spacing: -0.08em;
   font-weight: bold;
   color: #6c6c6c;
-}
-
-.menu-list .title-context:hover {
-  color: #202020;
-}
-
-.menu-list .title-context:hover::before {
-  top: initial;
-  bottom: 0;
 }
 
 .menu-list .title-context.actived-title-context {
@@ -150,8 +182,10 @@ ul li {
 .submenu {
   position: absolute;
   visibility: hidden;
+  opacity: 0;
   top: 12px;
   left: 10rem;
+  transition: all .5s;
 }
 
 .submenu li a {
@@ -171,6 +205,88 @@ ul li {
 .submenu.actived-submenu {
   z-index: 9999;
   visibility: visible;
+  opacity: 1;
+}
+
+.footer {
+  box-sizing: border-box;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  bottom: 20px;
+  padding: 0 25px;
+}
+
+.footer-list {
+  margin-bottom: 5px;
+}
+
+.footer-list li {
+  margin: 0 7px;
+}
+
+.footer-list li:first-child {
+  margin-left: 0;
+}
+
+.footer-list li:first-child a {
+  font-weight: bold;
+}
+
+.footer-list a {
+  font-size: 1.2rem;
+  color: #777;
+}
+
+.copyright {
+  text-transform: capitalize;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: #777;
+}
+
+.related-site {
+  height: 2.8rem;
+  border: 1px solid #aaa;
+  width: 100%;
+}
+
+.related-site .title {
+  box-sizing: border-box;
+  padding-left: 10px;
+  line-height: 2.8rem;
+}
+
+.related-site .title a {
+  display: block;
+  color: #777;
+}
+
+.related-site-box {
+  position: relative;
+  display: none;
+  width: 100%;
+}
+
+.related-site-box .related-site-list {
+  position: absolute;
+  left: -1px;
+  bottom: 2.8rem;
+  width: 100%;
+  padding: 7px 0;
+  border: 1px solid #aaa;
+  background-color: #fff;
+}
+
+.related-site-box .related-site-list a {
+  display: block;
+  box-sizing: border-box;
+  padding: 5px 0 5px 10px;
+  color: #777;
+}
+
+.related-site-box.actived {
+  display: block;
 }
 
 /*# sourceMappingURL=stylesheet.css.map */
