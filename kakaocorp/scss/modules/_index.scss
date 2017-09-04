@@ -13,6 +13,7 @@ $hover-text-color: #202020;
   width: 319px;
   height: 100vh;
   border-right: 1px solid #ddd;
+  background: #fff;
   // background: lightblue;
 }
 // e:side-menu
@@ -234,3 +235,45 @@ $hover-text-color: #202020;
   }
 }
 // e:footer
+
+// s:content
+// s:side-content
+.side-content {
+  // background: #ff0;
+  width: calc(100% - 320px);
+  min-height: 100vh;
+  margin-left: 320px;
+  width: 929px;
+  @extend %floating-el;
+  .content-left-box-depth1 {
+    width: calc(100% / 3 * 2);
+  }
+  .content-right-box-depth1 {
+    width: calc(100% / 3);
+    box-sizing: border-box;
+    padding: 35px 35px 0 35px;
+    border-right: 1px solid #ddd;
+  }
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+}
+.content-box1-depth2 {
+  
+}
+.content-box2-depth2 {
+  @extend %floating-el;
+  & > div {
+    box-sizing: border-box;
+    padding: 35px 35px 0 35px;
+  }
+  .content-box1-depth3, 
+  .content-box2-depth3 {
+    width: 50%;
+    border-right: 1px solid #ddd;
+  }
+}
+// e:side-content
+// e:content

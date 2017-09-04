@@ -1,10 +1,10 @@
-.utill-list::after, .footer-list::after {
+.utill-list::after, .footer-list::after, .side-content::after, .content-box2-depth2::after {
   content: '';
   display: block;
   clear: both;
 }
 
-.utill-list > *, .footer-list > * {
+.utill-list > *, .footer-list > *, .side-content > *, .content-box2-depth2 > * {
   float: left;
 }
 
@@ -74,6 +74,7 @@ p {
   width: 319px;
   height: 100vh;
   border-right: 1px solid #ddd;
+  background: #fff;
 }
 
 .utill-list {
@@ -301,6 +302,41 @@ p {
 .related-site-box.actived {
   display: block;
   z-index: 9999;
+}
+
+.side-content {
+  width: calc(100% - 320px);
+  min-height: 100vh;
+  margin-left: 320px;
+  width: 929px;
+}
+
+.side-content .content-left-box-depth1 {
+  width: calc(100% / 3 * 2);
+}
+
+.side-content .content-right-box-depth1 {
+  width: calc(100% / 3);
+  box-sizing: border-box;
+  padding: 35px 35px 0 35px;
+  border-right: 1px solid #ddd;
+}
+
+.side-content img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.content-box2-depth2 > div {
+  box-sizing: border-box;
+  padding: 35px 35px 0 35px;
+}
+
+.content-box2-depth2 .content-box1-depth3,
+.content-box2-depth2 .content-box2-depth3 {
+  width: 50%;
+  border-right: 1px solid #ddd;
 }
 
 /*# sourceMappingURL=stylesheet.css.map */
