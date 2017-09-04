@@ -1,0 +1,25 @@
+// create auto prefixer
+@mixin prefix($property, $value) {
+  -ms-#{$property}: $value;
+  -moz-#{$property}: $value;
+  -opera-#{$property}: $value;
+  -webkit-#{$property}: $value;
+}
+
+// create auto media query
+@mixin mediaQuery($min, $max, $what: width, $type: screen) {
+
+  @if $max == 0 {
+    @media #{$type} and (min-#{$what}: $min) {
+      @content;
+    }    
+  } @else if $min == 0 {
+    @media #{$type} and (max-#{$what}: $max) {
+      @content;
+    }    
+  } @else {
+    @media #{$type} and (min-#{$what}: $min) and (max-#{$what}: $max) {
+      @content;
+    }    
+  }
+}
