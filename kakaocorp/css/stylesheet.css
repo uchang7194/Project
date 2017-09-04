@@ -120,6 +120,12 @@ p {
   transition: all 0.2s;
 }
 
+@media screen and (max-height: 650px) {
+  .side-menu-content {
+    top: 300px;
+  }
+}
+
 .logo-box {
   text-align: center;
 }
@@ -141,15 +147,7 @@ p {
   display: inline-block;
   width: 9rem;
   left: 50%;
-  -ms-left: 50%;
-  -moz-left: 50%;
-  -opera-left: 50%;
-  -webkit-left: 50%;
   transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  -moz-transform: translateX(-50%);
-  -opera-transform: translateX(-50%);
-  -webkit-transform: translateX(-50%);
   text-align: center;
   transition: all .5s ease-out;
 }
@@ -228,6 +226,7 @@ p {
 @media screen and (max-height: 650px) {
   .footer {
     top: 530px;
+    bottom: 0;
   }
 }
 

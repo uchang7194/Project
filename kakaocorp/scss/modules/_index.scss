@@ -60,6 +60,11 @@ $hover-text-color: #202020;
   padding-top: 150px;
   transition: all 0.2s;
 }
+@include mediaQuery(0, 650px, height) {
+  .side-menu-content {
+    top: 300px;
+  }
+}
 // e:side-menu-content
 // s:logo
 .logo-box {
@@ -73,6 +78,7 @@ $hover-text-color: #202020;
   margin-top: 20px;
   & > li {
     position: relative;
+    // @include prefix(position, relative);
     padding: 12px 0;
     width: 207px;
     margin: 0 auto;
@@ -82,9 +88,7 @@ $hover-text-color: #202020;
     display: inline-block;
     width: 9rem;
     left: 50%;
-    @include prefix(left, 50%);
     transform: translateX(-50%);
-    @include prefix(transform, translateX(-50%));
     text-align: center;
     transition: all .5s ease-out;
     &:hover .title-context, 
@@ -115,6 +119,7 @@ $hover-text-color: #202020;
   &.actived-menu {
     a {
       text-align: left;
+      // left: 5px;
       left: 5px;
       transform: initial;
     }
@@ -164,6 +169,7 @@ $hover-text-color: #202020;
 @include mediaQuery(0, 650px, height) {
   .footer {
     top: 530px;
+    bottom: 0;
   }
 }
 .footer-list {

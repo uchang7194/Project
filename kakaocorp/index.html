@@ -219,14 +219,12 @@
               lists = menu_list.querySelectorAll('.title');
               sub_lists = menu_list.querySelectorAll('.submenu');
               side_menu_content = document.querySelector('.side-menu-content');
-              resizeMenu();
               bind();
             }
             
             function bind() {
               menu_list.addEventListener('click', menuEvent, true);
               menu_list.addEventListener('focus', menuEvent, true);
-              window.addEventListener('resize', resizeMenu);
             }
 
             function addClass(class_name, el) {
@@ -285,14 +283,6 @@
                 el = el.parentNode;
               }
               return el;
-            }
-            function resizeMenu() {
-              var window_height = window.innerHeight;
-              if(window_height <= 650) {
-                side_menu_content.style.top = 300 + 'px';
-              } else {
-                side_menu_content.style.top = '50%';
-              }
             }
             init();
           }(window));
