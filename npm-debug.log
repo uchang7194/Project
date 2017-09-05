@@ -2,7 +2,7 @@
 1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
 1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
 1 verbose cli   'run',
-1 verbose cli   'watch' ]
+1 verbose cli   'dev' ]
 2 info using npm@3.10.10
 3 info using node@v6.10.3
 4 verbose config Skipping project config: C:\Users\heosu/.npmrc. (matches userconfig)
@@ -10,7 +10,7 @@
 5 verbose stack     at Error (native)
 6 verbose cwd C:\Users\heosu\Desktop\공부하는거\git\project
 7 error Windows_NT 10.0.15063
-8 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "run" "watch"
+8 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "run" "dev"
 9 error node v6.10.3
 10 error npm  v3.10.10
 11 error path C:\Users\heosu\package.json
