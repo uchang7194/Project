@@ -14,6 +14,7 @@ $hover-text-color: #202020;
   height: 100vh;
   border-right: 1px solid #ddd;
   background: #fff;
+  z-index: 9999;
   // background: lightblue;
 }
 // e:side-menu
@@ -251,14 +252,94 @@ $hover-text-color: #202020;
   .content-right-box-depth1 {
     width: calc(100% / 3);
     box-sizing: border-box;
-    padding: 35px 35px 0 35px;
+    padding: 0 35px 0 35px;
     border-right: 1px solid #ddd;
+    & > * {
+      padding: 50px 0 35px 0;
+    }
   }
   img {
     display: block;
     width: 100%;
     height: auto;
   }
+  a {
+    display: block;
+  }
+  h4 {
+    font-size: 2.5rem;
+  }
+  .title {
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: bold;
+    font-size: 1.3rem;
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -10px;
+      width: 20px;
+      height: 1px;
+      background: #000;
+    }
+  }
+  p, time {
+    font-size: 1.3rem;
+    color: #aaa;
+  }
+  time {
+    font-size: 1.1rem;
+  }
+  // s:news
+  .news {
+    border-bottom: 1px solid #ddd;
+    h4 {
+      font-size: 2rem;
+    }
+    p {
+      margin-bottom: 10px;
+    }
+  }
+  // e:news
+  // s:stock
+  .stock {
+    position: relative;
+    p {
+      font-size: 4rem;
+      color: #202020;
+      span {
+        position: relative;
+        display: block;
+        font-size: 2.5rem;
+        padding-left: 2rem;
+        &.red {
+          font-size: 2rem;
+          color: red;
+          &::after {
+            content: '▲';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+            color: red;
+          }
+        }
+      }
+    }
+    time {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+    }
+  }
+  // e:stock
+  // s:kakaoservice
+  .kakao-service {
+  }
+  // e:kakaoservice
 }
 .content-box1-depth2 {
   
@@ -267,13 +348,47 @@ $hover-text-color: #202020;
   @extend %floating-el;
   & > div {
     box-sizing: border-box;
-    padding: 35px 35px 0 35px;
+    padding: 0 35px 0 35px;
   }
   .content-box1-depth3, 
   .content-box2-depth3 {
     width: 50%;
     border-right: 1px solid #ddd;
+    & > * {
+      padding: 50px 0 35px 0;
+    }
   }
 }
 // e:side-content
+.content-right-box-depth1 {
+  .kakaostory {
+    position: relative;
+    .content {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }  
+  }
+  .notice {
+    ul {
+      list-style: square;
+    }
+    li {
+      position: relative;
+      a{
+        text-overflow:ellipsis;
+        white-space:nowrap;
+        word-wrap:normal;
+        overflow:hidden;
+        width: 65%;
+      }
+      time {     
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+      }
+    }
+  }
+}
 // e:content
