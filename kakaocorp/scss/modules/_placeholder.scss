@@ -8,6 +8,14 @@
     float: left;
   }
 }
+%init-floating-el {
+  &::after {
+    content: none;
+  }
+  & > * {
+    float: none;
+  }
+}
 
 %text_hovering {
   &::before {
