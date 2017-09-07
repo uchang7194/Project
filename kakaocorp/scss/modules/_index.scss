@@ -17,6 +17,7 @@ $hover-text-color: #202020;
   z-index: 9999;
   // background: lightblue;
 }
+  // s:menu-btn-box
 .menu-btn-box {
   position: absolute;
   left: 18.5px;
@@ -46,6 +47,10 @@ $hover-text-color: #202020;
   }
   
 }
+.hover-effect {
+  background: #999;
+}
+  // e:menu-btn-box
 // e:side-menu
 // s:side-menu
 .utill-list {
@@ -281,10 +286,9 @@ $hover-text-color: #202020;
   .content-right-box-depth1 {
     width: calc(100% / 3);
     box-sizing: border-box;
-    padding: 0 35px 0 35px;
     border-right: 1px solid #ddd;
     & > * {
-      padding: 50px 0 35px 0;
+      padding: 50px 35px 35px 35px;
     }
   }
   img {
@@ -360,15 +364,47 @@ $hover-text-color: #202020;
     }
     time {
       position: absolute;
-      bottom: 0;
-      right: 0;
+      bottom: 35px;
+      right: 35px;
     }
   }
   // e:stock
   // s:kakaoservice
   .kakao-service {
+    &:hover {
+      background: #ddd;
+    }
   }
   // e:kakaoservice
+  // s:service1(kakaotaxi)
+  .service1 {
+    &:hover {
+      background: #ddd;
+    }
+  }
+  // e:service1(kakaotaxi)
+  // s:service2(brunch)
+  .service2 {
+    &:hover {
+      background: #ddd;
+    }
+  }
+  // e:service2(brunch)
+  // s:careers
+  .careers {
+    &:hover {
+      background: #ddd;
+    }
+  }
+  // e:careers
+  // s:service3(같이가치)
+  .service3 {
+    &:hover {
+      background: #ddd;
+    }
+  }
+  // e:service3(같이가치)
+
 }
 .content-box1-depth2 {
   
@@ -377,14 +413,13 @@ $hover-text-color: #202020;
   @extend %floating-el;
   & > div {
     box-sizing: border-box;
-    padding: 0 35px 0 35px;
   }
   .content-box1-depth3, 
   .content-box2-depth3 {
     width: 50%;
     border-right: 1px solid #ddd;
     & > * {
-      padding: 50px 0 35px 0;
+      padding: 50px 35px 35px 35px;
     }
   }
 }
@@ -403,13 +438,19 @@ $hover-text-color: #202020;
       list-style: square;
     }
     li {
+      list-style: disc;
       position: relative;
+      margin-bottom: 10px;
       a{
-        text-overflow:ellipsis;
-        white-space:nowrap;
-        word-wrap:normal;
-        overflow:hidden;
+        display: inline-block;
         width: 65%;
+        vertical-align: middle;
+      }
+      p {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        word-wrap: normal;
+        overflow: hidden;
       }
       time {     
         position: absolute;

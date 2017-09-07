@@ -120,6 +120,10 @@ p {
   margin-bottom: 0;
 }
 
+.hover-effect {
+  background: #999;
+}
+
 .utill-list {
   position: absolute;
   z-index: 9999;
@@ -361,12 +365,11 @@ p {
 .side-content .content-right-box-depth1 {
   width: calc(100% / 3);
   box-sizing: border-box;
-  padding: 0 35px 0 35px;
   border-right: 1px solid #ddd;
 }
 
 .side-content .content-right-box-depth1 > * {
-  padding: 50px 0 35px 0;
+  padding: 50px 35px 35px 35px;
 }
 
 .side-content img {
@@ -455,13 +458,32 @@ p {
 
 .side-content .stock time {
   position: absolute;
-  bottom: 0;
-  right: 0;
+  bottom: 35px;
+  right: 35px;
+}
+
+.side-content .kakao-service:hover {
+  background: #ddd;
+}
+
+.side-content .service1:hover {
+  background: #ddd;
+}
+
+.side-content .service2:hover {
+  background: #ddd;
+}
+
+.side-content .careers:hover {
+  background: #ddd;
+}
+
+.side-content .service3:hover {
+  background: #ddd;
 }
 
 .content-box2-depth2 > div {
   box-sizing: border-box;
-  padding: 0 35px 0 35px;
 }
 
 .content-box2-depth2 .content-box1-depth3,
@@ -472,7 +494,7 @@ p {
 
 .content-box2-depth2 .content-box1-depth3 > *,
 .content-box2-depth2 .content-box2-depth3 > * {
-  padding: 50px 0 35px 0;
+  padding: 50px 35px 35px 35px;
 }
 
 .content-right-box-depth1 .kakaostory {
@@ -490,15 +512,22 @@ p {
 }
 
 .content-right-box-depth1 .notice li {
+  list-style: disc;
   position: relative;
+  margin-bottom: 10px;
 }
 
 .content-right-box-depth1 .notice li a {
+  display: inline-block;
+  width: 65%;
+  vertical-align: middle;
+}
+
+.content-right-box-depth1 .notice li p {
   text-overflow: ellipsis;
   white-space: nowrap;
   word-wrap: normal;
   overflow: hidden;
-  width: 65%;
 }
 
 .content-right-box-depth1 .notice li time {
