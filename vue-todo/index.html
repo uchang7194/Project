@@ -2,6 +2,25 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://www.gstatic.com/firebasejs/4.3.1/firebase.js"></script>
+    <script>
+      (function(global){
+        'use strict';
+        // Initialize Firebase
+        var config = {
+          apiKey: "AIzaSyBqQ_nA8NBDEqz3Gnwz9Vx_KiT1CFCo_TY",
+          authDomain: "vue-todo-7f10a.firebaseapp.com",
+          databaseURL: "https://vue-todo-7f10a.firebaseio.com",
+          projectId: "vue-todo-7f10a",
+          storageBucket: "vue-todo-7f10a.appspot.com",
+          messagingSenderId: "940223292191"
+        };
+        
+        global.firebase.initializeApp(config);
+        
+      }(window));
+    </script>
     <title>vue-todo</title>
   </head>
   <body>
