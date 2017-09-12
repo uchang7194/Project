@@ -27,7 +27,7 @@
     <div class="header">
       <div class="header-inner">
         <div class="input-box">
-          <label><input type="text" class="search"/></label>
+          <label><input type="text" class="search" @input="setSearchValue" @value="getSearchValue"/></label>
           <button type="button" class="search-btn">
             <span class="a11y-hidden">검색버튼</span>
             <i class="fa fa-search" aria-hidden="true"></i>
@@ -39,9 +39,9 @@
       </div>
     </div>
     <!--e:searchTodos-->
-    
+    <!--s:todo-list-->
     <ul class="todo-list">
-      <li v-for="(todo, index) in todos" :data-index="index">
+      <li v-for="(todo, index) in filterdTodos" class="todo-item" :data-index="index">
         <div class="title-box">
           <p class="todo-title">
             {{todo.value.title}}
@@ -59,6 +59,7 @@
         </div>
       </li>
     </ul>
+    <!--e:todo-list-->
   </div>
 </template>
 <script>
@@ -75,7 +76,8 @@ export default {
       },
       is_loading: false,
       is_addTodo: false,
-      todos: []
+      todos: [],
+      search_value: ''
     }
   },
   created: function() {
@@ -126,12 +128,22 @@ export default {
     },
     // DELETE
     deleteFirebaseItem(e) {
-      let index = e.target.parentNode.parentNode.getAttribute('data-index');
-      
-      firebase.database().ref('todo/' + this.todos[index].key).set({}).then(() => {
-        this.is_loading = true; 
-        this.getFirebase();
-      });
+      let index = this.findElement(e.target, 'class', 'todo-item').getAttribute('data-index'),
+          isDel = confirm('삭제하시겠습니까?');
+
+      if(isDel) {
+        firebase.database().ref('todo/' + this.todos[index].key).set({}).then(() => {
+          this.is_loading = true; 
+          this.getFirebase();
+        });
+      }
+    },
+    findElement(el, attr, name) {
+      do{
+        el = el.parentNode;
+      }while(el.getAttribute(attr) !== name)
+
+      return el;
     },
     // data -> todo
     setTodoTitle(e) {
@@ -139,6 +151,9 @@ export default {
     },
     setTodoContent(e) {
       this.todo.content = e.target.value;
+    },
+    setSearchValue(e) {
+      this.search_value = e.target.value;
     },
     sendData() {
       let vm = this, date = new Date();
@@ -174,7 +189,7 @@ export default {
     },
     activedAddTodo() {
       this.is_addTodo = !this.is_addTodo;
-    } 
+    }
   },
   computed: {
     getTodoTitle() {
@@ -182,7 +197,24 @@ export default {
     },
     getTodoContent() {
       return this.todo.content;
-    }
+    },
+    getSearchValue() {
+      return this.search_value;
+    },
+    filterdTodos() {
+      return this.todos.filter(data => {
+        let title = data.value.title,
+            content = data.value.content,
+            date = data.value.date,
+            filtered_data = false,
+            value = this.search_value;
+        
+        if(title.indexOf(value) !== -1 || content.indexOf(value) !== -1 || date.indexOf(value) !== -1) {
+          filtered_data = true;
+        }
+        return filtered_data;
+      });
+    } 
   }
   
 }
@@ -288,6 +320,7 @@ $gutter: 10px;
 
   input {
     position: absolute;
+    box-sizing: border-box;
     top: 50%;
     left: 0;
     transform: translateY(-50%);

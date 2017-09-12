@@ -49,6 +49,6 @@ button {
   margin: -1px;
 }
 input {
-  padding: 0;   
+  padding: 0 0 0 10px;   
 }
 </style>
