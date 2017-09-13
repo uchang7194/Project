@@ -1,11 +1,10 @@
 # vue-todo
-> vuex, resource 등을 어떻게 관리를 해야할지에 대해서 공부하기 위해 todoList를 만들어보기.
+> 내가 쓸 todolist 만들기
 
 ## 사용기술
-1. vuex
-2. vue-resource
-3. firebase
-4. scss
+1. vue-resource
+2. firebase
+3. scss
 
 ## Build Setup
 
