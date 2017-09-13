@@ -5,7 +5,9 @@
   - Fastcampus에서 배웠던 것들을 응용.
   
 ## 사이트
-1. [kakaocorp(main)](https://uchang7194.github.io/project/kakaocorp/) 
+1. [kakaocorp(main)](https://uchang7194.github.io/project/kakaocorp/)
+1. [vue-todo](https://uchang7194.github.io/project/vue-todo/)
+
 ### 단계
 1. 분석하기
 2. 조사 및 정리
