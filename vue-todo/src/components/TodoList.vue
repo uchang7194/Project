@@ -47,6 +47,10 @@
             {{todo.value.title}}
           </p>
           <span class="todo-date">{{todo.value.date}}</span>
+          <button type="button" class="update-btn" @click="updateActived">
+            <span class="a11y-hidden">수정버튼</span>
+            <i class="fa fa-pencil" aria-hidden="true"></i>
+          </button>
           <button type="button" class="del-btn" @click="deleteFirebaseItem">
             <span class="a11y-hidden">삭제버튼</span>
             <i class="fa fa-trash" aria-hidden="true"></i>
@@ -76,6 +80,8 @@ export default {
       },
       is_loading: false,
       is_addTodo: false,
+      is_update: false,
+      update_index: 0,
       todos: [],
       search_value: ''
     }
@@ -93,10 +99,19 @@ export default {
                     this.is_loading = false;
 
                     return response.json();
-                  } 
+                  } else {
+                    setTimeOut(() => {
+                      alert('서버 통신에 실패했습니다.');
+                      this.is_loading = false;
+                    }, 5000)
+                  }
                 })
                 .then(data => {
-                  // state.db_data = Object.values(data);
+                  
+                  if(data === null || data === undefined) {
+                    this.todos = [];
+                    return;
+                  }
                   let values = Object.values(data),
                       keys = Object.keys(data),
                       temp_arr = [];
@@ -119,7 +134,6 @@ export default {
     setFirebase(todo) {
       this.$http.post(this.URL, todo)
               .then(response => {
-                this.is_loading = true;
                 this.getFirebase();
               })
               .catch(error => {
@@ -133,10 +147,29 @@ export default {
 
       if(isDel) {
         firebase.database().ref('todo/' + this.todos[index].key).set({}).then(() => {
-          this.is_loading = true; 
+          this.is_loading = true;
           this.getFirebase();
         });
       }
+    },
+    updateFirebaseItem(todo, key) {
+      firebase.database().ref('todo/' + key).set(todo).then(() => {
+        this.getFirebase();
+      });
+    },
+    updateActived(e) {
+      let vm = this, index = vm.findElement(e.target, 'class', 'todo-item').getAttribute('data-index'),
+          root = vm.$el.querySelector('.add-todo');
+
+      vm.is_update = !vm.is_update;
+      vm.update_index = index;
+
+      root.querySelector('#add-todo-title').setAttribute('value', vm.todos[index].value.title);
+      vm.todo.title = vm.todos[index].value.title;
+      root.querySelector('#add-todo-content').setAttribute('value', vm.todos[index].value.content);
+      vm.todo.content = vm.todos[index].value.content;
+
+      vm.is_addTodo = !vm.is_addTodo;
     },
     findElement(el, attr, name) {
       do{
@@ -164,8 +197,15 @@ export default {
         return;
       }  
 
-      this.setFirebase(vm.todo);
-      this.activedAddTodo();
+      this.is_loading = true;
+
+      if(vm.is_update) {
+        vm.is_update = !vm.is_update;
+        vm.updateFirebaseItem(vm.todo, this.todos[vm.update_index].key);
+      } else {
+        vm.setFirebase(vm.todo);
+      }
+      vm.activedAddTodo();
     },
     isEmpty() {
       let todo = this.todo;
@@ -188,7 +228,17 @@ export default {
       }
     },
     activedAddTodo() {
-      this.is_addTodo = !this.is_addTodo;
+      let vm = this, root = vm.$el.querySelector('.add-todo');
+
+      vm.is_addTodo = !vm.is_addTodo;
+      
+      if(vm.is_update) {
+        vm.is_update = !vm.is_update;
+      }
+      root.querySelector('#add-todo-title').setAttribute('value', '');
+      vm.todo.title = '';
+      root.querySelector('#add-todo-content').setAttribute('value', '');
+      vm.todo.content = '';
     }
   },
   computed: {
@@ -277,12 +327,17 @@ $gutter: 10px;
   border-bottom: 1px solid #aaa;
   background: lightyellow;
 
-  .del-btn {
+  .del-btn, .update-btn {
     position: absolute;
     top: 25%;
-    right: 10px;
     font-size: 1.6rem;
     transform: translateY(-50%);
+  }
+  .del-btn {
+    right: 10px;
+  }
+  .update-btn {
+    right: calc(1.6rem + 10px);
   }
 }
 .todo-title {
@@ -404,4 +459,31 @@ $gutter: 10px;
 }
 // e:add-todo
 
+// tablet
+@media screen and (max-width: 1023px) {
+  .todo-list {
+    width: 100%;
+    li {
+      width: calc(50% - #{$gutter});
+    }
+  }
+  .header-inner {
+    width: 100%;
+  }
+  .add-box {
+    position: relative;
+    text-align: right;
+    padding: 0 20px;
+  }
+}
+// mobile
+@media screen and (max-width: 768px) {
+  .todo-list {
+    box-sizing: border-box;
+    padding: 0 10px;
+    li {
+      width: 100%;
+    }
+  }
+}
 </style>
