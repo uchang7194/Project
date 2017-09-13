@@ -300,6 +300,7 @@ $gutter: 10px;
   max-width: 100%;
 }
 .todo-list {
+  box-sizing: border-box;
   list-style: none;
   max-width: $max_width;
   margin: 30px auto 0 auto;
@@ -463,6 +464,7 @@ $gutter: 10px;
 @media screen and (max-width: 1023px) {
   .todo-list {
     width: 100%;
+    padding: 0 0 0 $gutter;
     li {
       width: calc(50% - #{$gutter});
     }
@@ -479,7 +481,6 @@ $gutter: 10px;
 // mobile
 @media screen and (max-width: 768px) {
   .todo-list {
-    box-sizing: border-box;
     padding: 0 10px;
     li {
       width: 100%;
