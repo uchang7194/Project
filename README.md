@@ -6,7 +6,7 @@
   
 ## 사이트
 1. [kakaocorp(main)](https://uchang7194.github.io/project/kakaocorp/)
-1. [vue-todo](https://uchang7194.github.io/project/vue-todo/)
+2. [vue-todo](https://uchang7194.github.io/project/vue-todo/)
 
 ### 단계
 1. 분석하기
