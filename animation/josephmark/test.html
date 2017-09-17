@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .cover {
+      background: red;
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+    .cover::after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+    .cover div {
+      width: 100px;
+      height: 100px;
+      float: left;
+    }
+    .cover div:nth-child(1){
+      background: pink;
+      margin-right: 400px;
+      float: right;
+    }
+    .cover div:nth-child(2){
+      margin-right: -500px;
+      width: 400px;
+      background: yellow;
+      float: right;
+    }
+    .cover div:nth-child(3){
+      background: green;
+      float: left;
+    }
+    .cover div:nth-child(4){
+      background: blue;
+    }
+    .cover div:nth-child(5){
+      background: orange;
+    }
+    .cover div:nth-child(6){
+      background: deeppink;
+    }
+  </style>
+</head>
+<body>
+  <div class="cover">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+  </div>
+</body>
+</html>
