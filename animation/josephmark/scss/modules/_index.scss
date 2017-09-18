@@ -25,11 +25,12 @@
 }
 .header {
   padding-left: 90px;
+  .header-title {
+    font-size: 5rem;
+    font-weight: bold;
+  }
 }
-.header-title {
-  font-size: 5rem;
-  font-weight: bold;
-}
+
 .gnb {
   ul {
     &::after {
@@ -45,11 +46,12 @@
 .gnb-list {
   list-style: none;
   padding: 0;
+  margin-top: 30px;
   li {
     margin: 0 32px 0 0 ;
   }
   a {
-    $color: #F899AA;
+    $color: deeppink;
     font-size: 2rem;
     font-weight: 500;
     text-decoration: none;
@@ -75,21 +77,33 @@ section {
     height: 100%;
   }
   img {
+    opacity: 0;
     position: absolute;
     width: 100%;
     height: auto;
-    bottom: 50%;
+    bottom: 20%;
     left: 0;
+    transition: all 1s;
+    &.scrolled {
+      opacity: 1;
+      bottom: 50%; 
+    }
   }
   figcaption, p {
     box-sizing: border-box;
     padding-right: 30px;
   }
   figcaption {
+    opacity: 0;
     position: absolute;
-    top: 50%;
+    top: 80%;
     left: 0;
     margin-bottom: 20px;
+    transition: all 1s;
+    &.scrolled {
+      opacity: 1;
+      top: 50%; 
+    }
   }
   p {
     font-size: 12px;
@@ -104,18 +118,24 @@ section {
     a {
       width: 100%;
       img, figcaption {
-        top: 50%;
-        transform: translateY(-50%);
+        // top: 50%;
+        // transform: translateY(-50%);
       }
       img {
         width: 60%;
-        // top: 0;
+        // bottom: 20%;
         left: initial;
         right: 0;
+        &.scrolled {
+          transform: translateY(50%);
+        }
       }
       figcaption {
         width: 45%;
         left: 0;
+        &.scrolled {
+          transform: translateY(-50%);
+        }
       }
       p {
         font-size: 2rem;
@@ -124,7 +144,6 @@ section {
         font-size: 5rem;
       }
     }
-    
   }
   &.two {
     a {
@@ -137,7 +156,17 @@ section {
     }
   }
 }
+
 .content1 {
+  img, figcaption {
+    opacity: 1;
+  }
+  img {
+    bottom: 50%;
+  }
+  figcaption {
+    top: 50%;
+  }
   a {
     &:nth-child(1) {
       img {
@@ -178,7 +207,7 @@ section {
 .content6 {
   height: auto;
   text-align: center;
-  margin-bottom: 420px;
+  margin-bottom: 80px;
   & > * {
     display: inline-block;
     vertical-align: middle;
@@ -198,5 +227,91 @@ section {
     color: #fff;
     padding: 0 15px;
     cursor: pointer;
+  }
+}
+.footer {
+  padding-bottom: 40px;
+}
+.info-list {
+  &::after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+  li {
+    float: left;
+    margin-right: 20px;
+    &:nth-child(1) {
+      position: relative;
+      a::after{
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        height: 2.5rem;
+        background: deeppink;
+        transform-origin: left;
+        transform: translateY(-50%) rotate(-5deg);
+      }
+    }
+  }
+  a {
+    font-size: 11rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    // cursor: pointer;
+  }
+}
+.contact {
+  margin-top: 30px;
+  &::after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+  & > li {
+    float: left;
+    height: 110px;
+    margin-right: 52px;
+    overflow: hidden;
+    font-size: 11px;
+    
+    &:nth-child(1) {
+      width: 139px;
+    }
+    &:nth-child(2) {
+      width: 211px;
+    }
+    &:nth-child(3) {
+      width: 103px;
+    }
+    &:nth-child(4) {
+      width: 103px;
+    }
+
+    li {
+      margin-bottom: 3px;
+    }
+    a {
+      text-decoration: underline;
+    }
+  }
+  strong {
+    display: block;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .currently {
+    height: 72px;
+    overflow: hidden;
+  }
+  .from, .follow {
+    text-transform: capitalize;
+  }
+  .follow {
+    a {
+      margin-right: 3px;
+    }
   }
 }

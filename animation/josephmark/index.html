@@ -10,6 +10,7 @@
 <body>
   <div class="wrapper">
     <header class="header">
+      <!-- 불필요한 class를 남발한다. -->
       <h1 class="logo"><a href="#">jm</a></h1>
       <p class="header-title">
         We create work we<br>
@@ -201,10 +202,107 @@
         </button>
       </section>
     </main>
-    <!-- <footer class="footer">
-      <p>
-        work careers about press contact blog
-      </p>
+    <script>
+      (function(global){
+        var root, content1, content2, content3, content4, content5, content6;
+
+        function init() {
+          root = document.querySelector('main');
+          content1 = root.querySelector('.content1');
+          content2 = root.querySelector('.content2');
+          content3 = root.querySelector('.content3');
+          content4 = root.querySelector('.content4');
+          content5 = root.querySelector('.content5');
+          content6 = root.querySelector('.content6');
+          console.log('content1: ', content1.offsetTop);
+          bind();
+        }
+
+        function bind() {
+          //scroll event
+          var depth = 100;
+          window.addEventListener('scroll', function(e){
+            
+            console.log('브라우저 높이: ', window.innerHeight);
+            console.log(this.scrollY);
+            var scrolled = this.scrollY + window.innerHeight,
+                temp_class = '';
+
+            // if((content1.offsetTop - depth) <= scrolled && (content1.offsetTop + depth) >= scrolled) {
+            //   temp_class = content1.getAttribute('class');
+            //   addScrolleddClass(content1, temp_class);
+            // } else 
+            
+            if ((content2.offsetTop - depth) <= scrolled && (content2.offsetTop + depth) >= scrolled) {
+              temp_class = content2.getAttribute('class');
+              addScrolleddClass(content2, temp_class);
+            } else if ((content3.offsetTop - depth) <= scrolled && (content3.offsetTop + depth) >= scrolled) {
+              temp_class = content3.getAttribute('class');
+              addScrolleddClass(content3, temp_class);
+            } else if ((content4.offsetTop - depth) <= scrolled && (content4.offsetTop + depth) >= scrolled) {
+              temp_class = content4.getAttribute('class');
+              addScrolleddClass(content4, temp_class);
+            } else if ((content5.offsetTop - depth) <= scrolled && (content5.offsetTop + depth) >= scrolled) {
+              temp_class = content5.getAttribute('class');
+              addScrolleddClass(content5, temp_class);
+            } 
+          });
+        }
+
+        function addScrolleddClass(el, temp_class) {
+          var imgs = el.querySelectorAll('img'),
+              figcaptions = el.querySelectorAll('figcaption');
+          
+          // for(var i = 0, len = imgs.length; i < len; i++) {
+          //   imgs[i].setAttribute('class', temp_class + ' scrolled');
+            
+          // }
+          setDelayed(imgs, temp_class, 500);
+          setDelayed(figcaptions, temp_class, 750);
+        }
+        function setDelayed(els, temp_class, time) {
+          global.setTimeout(function() {
+            for(var i = 0, len = els.length; i < len; i++) {
+              els[i].setAttribute('class', temp_class + ' scrolled');
+            }
+          }, time);
+        }
+        init();
+      }(window))
+    </script>
+    <footer class="footer">
+      <ul class="info-list">
+        <li>
+          <a href="#">
+            work
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            careers
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            about
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            press
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            contact
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            blog
+          </a>
+        </li>
+      </ul>
       <ul class="contact">
         <li>
           <strong>josephmark</strong>
@@ -214,7 +312,7 @@
         </li>
         <li>
           <strong>currently</strong>
-          <ul>
+          <ul class="contact-submenu currently">
             <li>
               <p>
                 Looking for a 
@@ -319,8 +417,71 @@
             </li>
           </ul>
         </li>
+        <li>
+          <strong>
+            from
+          </strong>
+          <ul class="contact-submenu from">
+            <li>
+              <a href="#">
+                los angeles
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                brisbane
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                sydney
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                stockholm
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <strong>
+            follow
+          </strong>
+          <ul class="contact-submenu follow">
+            <li>
+              <a href="#">
+                newsletter
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                design of the world
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                beta test team
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                IG
+              </a>
+              <a href="#">
+                FB
+              </a>
+              <a href="#">
+                TW
+              </a>
+              <a href="#">
+                LI
+              </a>
+            </li>
+          </ul>
+        </li>
       </ul>
-    </footer> -->
+    </footer>
   </div>
 </body>
 </html>
