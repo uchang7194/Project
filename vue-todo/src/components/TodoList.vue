@@ -13,7 +13,8 @@
         </div>
         <div class="content">
           <label for="add-todo-content">내용</label>
-          <input type="text" id="add-todo-content" @input="setTodoContent" @value="getTodoContent"/>
+          <!--input type="text" id="add-todo-content" @input="setTodoContent" @value="getTodoContent"/-->
+          <textarea id="add-todo-content" @input="setTodoContent" @value="getTodoContent"></textarea>
         </div>
         <button type="button" class="send-btn" @click="sendData">저장</button>
         <button type="button" class="close-btn" @click="activedAddTodo">
@@ -57,8 +58,8 @@
           </button>
         </div>
         <div class="content-box">
-          <p class="todo-content">
-            {{todo.value.content}}
+          <p class="todo-content" v-for="content in todo.value.content">
+            {{content}}
           </p>
         </div>
       </li>
@@ -117,14 +118,17 @@ export default {
                       temp_arr = [];
 
                   for(let i = 0, len = values.length; i < len; i++) {
+                    // console.log('before: ', values[i].content);
+                    // values[i].content.replace(/(?:\r\n|\r|\n)/g, '<br/>');
+                    // console.log('after: ', values[i].content);
+                    values[i].content = values[i].content.split('\n');
                     temp_arr.push({
                       key: keys[i],
                       value: values[i]
                     });
                   }
-
                   this.todos = temp_arr;
-
+                  console.log('GET: ', this.todos);
                 })
                 .catch(error => {
                   console.log(error);
@@ -164,10 +168,13 @@ export default {
       vm.is_update = !vm.is_update;
       vm.update_index = index;
 
-      root.querySelector('#add-todo-title').setAttribute('value', vm.todos[index].value.title);
-      vm.todo.title = vm.todos[index].value.title;
-      root.querySelector('#add-todo-content').setAttribute('value', vm.todos[index].value.content);
-      vm.todo.content = vm.todos[index].value.content;
+      let title = vm.todos[index].value.title;
+      root.querySelector('#add-todo-title').setAttribute('value', title);
+      vm.todo.title = title;
+      // console.log('update content: ', typeof vm.todos[index].value.content.join(''));
+      let content = vm.todos[index].value.content.map(curr => { return curr + '\n' }).join('');
+      root.querySelector('#add-todo-content').value = content;
+      vm.todo.content = content;
 
       vm.is_addTodo = !vm.is_addTodo;
     },
@@ -192,7 +199,8 @@ export default {
       let vm = this, date = new Date();
 
       vm.todo.date = date.getFullYear() + '. ' + (date.getMonth() + 1) + '. ' + date.getDate();
-
+      // vm.todo.content.replace(/(\r|\n)/g, 'sss');
+      console.log('sendData: ', vm.todo.content);
       if(!vm.isEmpty()) {
         return;
       }  
@@ -229,15 +237,17 @@ export default {
     },
     activedAddTodo() {
       let vm = this, root = vm.$el.querySelector('.add-todo');
-
+      console.log('root: ', root);
       vm.is_addTodo = !vm.is_addTodo;
       
       if(vm.is_update) {
         vm.is_update = !vm.is_update;
       }
       root.querySelector('#add-todo-title').setAttribute('value', '');
+      console.log(root.querySelector('#add-todo-title').getAttribute('value'));
       vm.todo.title = '';
       root.querySelector('#add-todo-content').setAttribute('value', '');
+      console.log(root.querySelector('#add-todo-content').getAttribute('value'));
       vm.todo.content = '';
     }
   },
@@ -432,7 +442,7 @@ $gutter: 10px;
     font-size: 1.5rem;
     margin-bottom: 10px;
   }
-  input {
+  input, textarea {
     box-sizing: border-box;
     width: 100%;
     border: 1px solid #aaa;

@@ -1,0 +1,386 @@
+html, body,
+h1, h2, h3, h4, h5,
+p,
+figure {
+  margin: 0;
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  font-size: 1.4rem;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+button {
+  border: none;
+  padding: 0;
+  background: #fff;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper {
+  width: 865px;
+  margin: 0 auto;
+  padding-top: 230px;
+}
+
+.logo {
+  position: fixed;
+  top: 87px;
+  margin-left: -10%;
+}
+
+.logo a {
+  text-transform: uppercase;
+  letter-spacing: 2rem;
+}
+
+.logo::after {
+  content: '';
+  position: absolute;
+  width: 2rem;
+  height: 2px;
+  top: 50%;
+  left: 1.2rem;
+  background: #000;
+  transform: translateY(-50%) rotate(-10deg);
+}
+
+.header {
+  padding-left: 90px;
+}
+
+.header .header-title {
+  font-size: 5rem;
+  font-weight: bold;
+}
+
+.gnb ul::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.gnb ul li {
+  float: left;
+}
+
+.gnb-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 30px;
+}
+
+.gnb-list li {
+  margin: 0 32px 0 0;
+}
+
+.gnb-list a {
+  font-size: 2rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: #000;
+}
+
+.gnb-list a:hover {
+  padding-bottom: 10px;
+  color: deeppink;
+  border-bottom: 2px solid deeppink;
+}
+
+section {
+  height: 520px;
+  margin-top: 80px;
+}
+
+section a {
+  position: relative;
+  display: inline-block;
+  height: 100%;
+  vertical-align: bottom;
+  margin-left: 30px;
+}
+
+section figure {
+  height: 100%;
+}
+
+section img {
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  height: auto;
+  bottom: 20%;
+  left: 0;
+  transition: all 1s;
+}
+
+section img.scrolled {
+  opacity: 1;
+  bottom: 50%;
+}
+
+section figcaption, section p {
+  box-sizing: border-box;
+  padding-right: 30px;
+}
+
+section figcaption {
+  opacity: 0;
+  position: absolute;
+  top: 80%;
+  left: 0;
+  margin-bottom: 20px;
+  transition: all 1s;
+}
+
+section figcaption.scrolled {
+  opacity: 1;
+  top: 50%;
+}
+
+section p {
+  font-size: 12px;
+}
+
+section strong {
+  display: block;
+  font-size: 2.3rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+section.one a {
+  width: 100%;
+}
+
+section.one a img {
+  width: 60%;
+  left: initial;
+  right: 0;
+}
+
+section.one a img.scrolled {
+  transform: translateY(50%);
+}
+
+section.one a figcaption {
+  width: 45%;
+  left: 0;
+}
+
+section.one a figcaption.scrolled {
+  transform: translateY(-50%);
+}
+
+section.one a p {
+  font-size: 2rem;
+}
+
+section.one a strong {
+  font-size: 5rem;
+}
+
+section.two a {
+  width: 50%;
+}
+
+section.three a {
+  width: calc(100% / 3 - 36px);
+}
+
+.content1 img, .content1 figcaption {
+  opacity: 1;
+}
+
+.content1 img {
+  bottom: 50%;
+}
+
+.content1 figcaption {
+  top: 50%;
+}
+
+.content1 a:nth-child(1) img {
+  width: 216px;
+}
+
+.content1 a:nth-child(2) img {
+  width: 235px;
+}
+
+.content1 a:nth-child(3) img {
+  width: 137px;
+}
+
+.content4 a:nth-child(1) img {
+  width: 137px;
+}
+
+.content4 a:nth-child(2) img {
+  width: 235px;
+}
+
+.content4 a:nth-child(3) img {
+  width: 235px;
+}
+
+.content6 {
+  height: auto;
+  text-align: center;
+  margin-top: 150px;
+  margin-bottom: 200px;
+}
+
+.content6 > * {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.content6 p, .content6 button {
+  position: relative;
+  top: 50%;
+  opacity: 0;
+  transition: all 1s;
+}
+
+.content6 p.scrolled, .content6 button.scrolled {
+  opacity: 1;
+  top: 0;
+}
+
+.content6 p {
+  text-align: left;
+}
+
+.content6 span {
+  font-size: 2rem;
+}
+
+.content6 button {
+  height: 4rem;
+  line-height: 3rem;
+  text-transform: uppercase;
+  font-size: 12px;
+  background: #000;
+  color: #fff;
+  padding: 0 15px;
+  cursor: pointer;
+}
+
+.footer {
+  padding-bottom: 40px;
+}
+
+.info-list::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.info-list li {
+  float: left;
+  margin-right: 30px;
+}
+
+.info-list li:first-child {
+  position: relative;
+}
+
+.info-list li:first-child a::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 2.5rem;
+  background: deeppink;
+  transform-origin: left;
+  transform: translateY(-50%) rotate(-5deg);
+}
+
+.info-list li:last-child {
+  margin-right: 0;
+}
+
+.info-list a {
+  font-size: 10.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.contact {
+  margin-top: 80px;
+  margin-bottom: 120px;
+}
+
+.contact::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.contact > li {
+  float: left;
+  height: 110px;
+  margin-right: 52px;
+  overflow: hidden;
+  font-size: 11px;
+}
+
+.contact > li:nth-child(1) {
+  width: 139px;
+}
+
+.contact > li:nth-child(2) {
+  width: 211px;
+}
+
+.contact > li:nth-child(3) {
+  width: 103px;
+}
+
+.contact > li:nth-child(4) {
+  width: 103px;
+}
+
+.contact > li li {
+  margin-bottom: 3px;
+}
+
+.contact > li a {
+  text-decoration: underline;
+}
+
+.contact strong {
+  display: block;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.contact .currently {
+  height: 72px;
+  overflow: hidden;
+}
+
+.contact .from, .contact .follow {
+  text-transform: capitalize;
+}
+
+.contact .follow a {
+  margin-right: 3px;
+}
+
+/*# sourceMappingURL=stylesheet.css.map */

@@ -1,0 +1,50 @@
+.example {
+  width: 1000px;
+  margin: 0 auto;
+  border: 2px solid #aaa;
+  margin-bottom: 10px;
+}
+.example::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.example div {
+  float: left;
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  line-height: 100px;
+  font-size: 15px;
+  font-weight: bold;
+}
+.example div:nth-child(1) {
+  background: lightblue;
+}
+.example div:nth-child(2) {
+  background: lightcoral;
+}
+.example div:nth-child(3) {
+  background: lightcyan;
+}
+.example div:nth-child(4) {
+  background: lightgoldenrodyellow;
+}
+.example div:nth-child(5) {
+  background: lightgray;
+}
+.example div:nth-child(6) {
+  background: lightgreen;
+}
+.example div:nth-child(7) {
+  background: lightgrey;
+}
+.example div:nth-child(8) {
+  background: lightpink;
+}
+.example div:nth-child(9) {
+  background: lightsalmon;
+}
+.example div:nth-child(10) {
+  background: lightseagreen;
+}
