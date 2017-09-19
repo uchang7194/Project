@@ -7,6 +7,7 @@
 ## 사이트
 1. [kakaocorp(main)](https://uchang7194.github.io/project/kakaocorp/)
 2. [vue-todo](https://uchang7194.github.io/project/vue-todo/)
+3. [josephmark(scroll animation)](https://uchang7194.github.io/project/animation/josephmark)
 
 ## 캐러샐
  

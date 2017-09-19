@@ -202,74 +202,6 @@
         </button>
       </section>
     </main>
-    <script>
-      (function(global){
-        var root, content1, content2, content3, content4, content5, content6;
-
-        function init() {
-          root = document.querySelector('main');
-          content1 = root.querySelector('.content1');
-          content2 = root.querySelector('.content2');
-          content3 = root.querySelector('.content3');
-          content4 = root.querySelector('.content4');
-          content5 = root.querySelector('.content5');
-          content6 = root.querySelector('.content6');
-          console.log('content1: ', content1.offsetTop);
-          bind();
-        }
-
-        function bind() {
-          //scroll event
-          var depth = 100;
-          window.addEventListener('scroll', function(e){
-            
-            console.log('브라우저 높이: ', window.innerHeight);
-            console.log(this.scrollY);
-            var scrolled = this.scrollY + window.innerHeight,
-                temp_class = '';
-
-            // if((content1.offsetTop - depth) <= scrolled && (content1.offsetTop + depth) >= scrolled) {
-            //   temp_class = content1.getAttribute('class');
-            //   addScrolleddClass(content1, temp_class);
-            // } else 
-            
-            if ((content2.offsetTop - depth) <= scrolled && (content2.offsetTop + depth) >= scrolled) {
-              temp_class = content2.getAttribute('class');
-              addScrolleddClass(content2, temp_class);
-            } else if ((content3.offsetTop - depth) <= scrolled && (content3.offsetTop + depth) >= scrolled) {
-              temp_class = content3.getAttribute('class');
-              addScrolleddClass(content3, temp_class);
-            } else if ((content4.offsetTop - depth) <= scrolled && (content4.offsetTop + depth) >= scrolled) {
-              temp_class = content4.getAttribute('class');
-              addScrolleddClass(content4, temp_class);
-            } else if ((content5.offsetTop - depth) <= scrolled && (content5.offsetTop + depth) >= scrolled) {
-              temp_class = content5.getAttribute('class');
-              addScrolleddClass(content5, temp_class);
-            } 
-          });
-        }
-
-        function addScrolleddClass(el, temp_class) {
-          var imgs = el.querySelectorAll('img'),
-              figcaptions = el.querySelectorAll('figcaption');
-          
-          // for(var i = 0, len = imgs.length; i < len; i++) {
-          //   imgs[i].setAttribute('class', temp_class + ' scrolled');
-            
-          // }
-          setDelayed(imgs, temp_class, 500);
-          setDelayed(figcaptions, temp_class, 750);
-        }
-        function setDelayed(els, temp_class, time) {
-          global.setTimeout(function() {
-            for(var i = 0, len = els.length; i < len; i++) {
-              els[i].setAttribute('class', temp_class + ' scrolled');
-            }
-          }, time);
-        }
-        init();
-      }(window))
-    </script>
     <footer class="footer">
       <ul class="info-list">
         <li>
@@ -483,5 +415,6 @@
       </ul>
     </footer>
   </div>
+  <script src="./js/scroll.js"></script>
 </body>
 </html>

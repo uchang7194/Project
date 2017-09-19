@@ -207,12 +207,23 @@ section {
 .content6 {
   height: auto;
   text-align: center;
-  margin-bottom: 80px;
+  margin-top: 150px;
+  margin-bottom: 200px;
   & > * {
     display: inline-block;
     vertical-align: middle;
+  } 
+  p, button {
+    position: relative;
+    top: 50%;
+    opacity: 0;
+    transition: all 1s;
+    &.scrolled {
+      opacity: 1;
+      top: 0;
+    }
   }
-  p {
+  p { 
     text-align: left;
   }
   span {
@@ -240,8 +251,8 @@ section {
   }
   li {
     float: left;
-    margin-right: 20px;
-    &:nth-child(1) {
+    margin-right: 30px;
+    &:first-child {
       position: relative;
       a::after{
         content: '';
@@ -250,21 +261,24 @@ section {
         left: 0;
         width: 100%;
         height: 2.5rem;
-        background: deeppink;
+        background: deeppink; 
         transform-origin: left;
         transform: translateY(-50%) rotate(-5deg);
       }
     }
+    &:last-child {
+      margin-right: 0;
+    }
   }
   a {
-    font-size: 11rem;
+    font-size: 10.5rem;
     font-weight: bold;
     text-transform: uppercase;
-    // cursor: pointer;
   }
 }
 .contact {
-  margin-top: 30px;
+  margin-top: 80px;
+  margin-bottom: 120px;
   &::after {
     content: '';
     display: block;
