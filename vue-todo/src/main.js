@@ -1,10 +1,9 @@
 import Vue from 'vue'
 import App from './App.vue'
-import VueResource from 'vue-resource'
 import Vuex from 'vuex'
 import {store} from './store/'
 
-Vue.use(VueResource);
+Vue.config.keyCodes.enter = 13;
 
 new Vue({
   el: '#app',

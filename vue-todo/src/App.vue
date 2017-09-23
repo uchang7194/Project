@@ -48,6 +48,11 @@ button {
   overflow: hidden;
   margin: -1px;
 }
+fieldset {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
 input {
   padding: 0 0 0 10px;   
 }
