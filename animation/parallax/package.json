@@ -1,0 +1,11 @@
+{
+  "name": "parallax",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "watch": "node-sass -w scss/stylesheet.scss -o css/ --output-style expanded css/source_map/ --source-map true"
+  },
+  "author": "",
+  "license": "ISC"
+}
