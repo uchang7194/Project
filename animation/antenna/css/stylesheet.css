@@ -1,0 +1,179 @@
+html, body,
+h1, h2, h3, h4, h5, h6,
+p {
+  margin: 0;
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  font-size: 1.4rem;
+}
+
+a {
+  text-decoration: none;
+  color: #202020;
+}
+
+.wrapper {
+  position: relative;
+  z-index: 1000;
+}
+
+.intro {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background: #fff;
+  z-index: 9999;
+}
+
+.intro .intro-img-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.intro.invisible {
+  -webkit-animation: intro-invisible 0.8s forwards;
+  animation: intro-invisible 0.8s forwards;
+}
+
+.intro.invisible.none {
+  display: none;
+}
+
+@keyframes intro-invisible {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.logo {
+  position: fixed;
+  top: 34px;
+  left: 28px;
+  z-index: 999;
+}
+
+.logo a {
+  display: block;
+  width: 80px;
+}
+
+.logo img {
+  width: 100%;
+  height: auto;
+}
+
+.sub-title {
+  position: fixed;
+  z-index: 201;
+  left: 40px;
+  top: 150px;
+  font-size: 5rem;
+  color: #fff;
+}
+
+.sub-title span {
+  color: #ff0;
+}
+
+.video-box {
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: visible;
+}
+
+.video-box video {
+  position: absolute;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.video-box.invisible {
+  animation: invisible 1.5s forwards;
+}
+
+.video-title-box {
+  position: absolute;
+  width: 100%;
+  bottom: 180px;
+  left: 40px;
+  z-index: 201;
+}
+
+.video-title-box h2, .video-title-box p {
+  color: #fff;
+}
+
+.video-title-box a {
+  color: #aaa;
+}
+
+.video-title-box a:hover {
+  color: #fff;
+}
+
+.video-title-box h2 {
+  font-size: 5rem;
+}
+
+.video-title-box p, .video-title-box a {
+  font-size: 3rem;
+}
+
+.video-title-box .title {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.video-title-box .title.invisible {
+  animation: invisible 1.5s forwards;
+}
+
+@keyframes invisible {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+main {
+  height: 400vh;
+  position: relative;
+  z-index: 500;
+  background: #fff;
+  margin-top: 100vh;
+}
+
+/*# sourceMappingURL=stylesheet.css.map */
