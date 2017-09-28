@@ -1,6 +1,6 @@
 html, body,
 h1, h2, h3, h4, h5, h6,
-p {
+p, figure{
   margin: 0;
 }
 html {
@@ -12,4 +12,12 @@ body {
 a {
   text-decoration: none;
   color: #202020;
+}
+ul {
+  margin: 0;
+  padding-left: 0;
+}
+li {
+  list-style: none;
+  
 }

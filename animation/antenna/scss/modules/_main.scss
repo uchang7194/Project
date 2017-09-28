@@ -1,7 +1,166 @@
 main {
-  height: 400vh;
+  // height: 400vh;
+  box-sizing: border-box;
   position: relative; 
   z-index: 500;
   background: #fff;
   margin-top: 100vh;
+}
+.main-inner {
+  max-width: 1440px;
+  padding: 10px;
+  margin: 0 auto;
+}
+.introduce-company {
+  padding: 40px 0;
+  p {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .eng {
+    font-size: 2.8rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  .kor {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #999;
+  }
+}
+.news {
+  ul {
+    &::after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+  }
+  li {
+    float: left;
+    box-sizing: border-box;
+    width: 25%;
+    padding: 10px;
+    margin-bottom: 25px;
+    &.one {
+      width: 100%;
+      figcaption {
+        background: transparent;
+      }
+      p, time {
+        font-size: 4rem;
+        font-weight: bold;
+        color: #202020;
+      }
+      .who {
+        position: initial;
+        font-size: 4rem;
+        font-weight: bold;
+      }
+    }
+  }
+  a {
+    display: block;
+    cursor: pointer;
+    position: relative;
+    &:hover {
+      figcaption {
+        opacity: 1;
+      }
+    }
+  }
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    &.circle {
+      border-radius: 50%;
+    }
+    &.full {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+  figcaption {
+    position: absolute;
+    opacity: 0;
+    box-sizing: border-box;
+    padding: 26px 30px;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(255,255,255,0.8);
+    font-size: 1.6rem;
+    transition: all 0.25s;
+    &.circle {
+      border-radius: 50%; 
+      background: transparent;
+      p {
+        position: absolute;
+        width: 100%;
+        text-align: center;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #fff;
+      }
+      .who {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+    &.show {
+      opacity: 1;
+    }
+    p {
+      line-height: 1.5;
+    }
+    span {
+      display: block;
+    }
+    time, .who {
+      color: #999;
+    }
+    .who {
+      position: absolute;
+      left: 30px;
+      bottom: 20px;
+      transition: all 0.5s;
+      &:hover {
+        color: #fff;
+      }
+    }
+  }
+}
+
+.show-me-more {
+  position: relative;
+  text-align: center;
+  padding: 37px 0;
+  .nav, .more {
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
+  .nav {
+    position: absolute;
+    top: 50%;
+    left: 30px;
+    transform: translateY(-50%);
+  }
+  .more {
+    a {
+      color: #aaa;
+      transition: all 0.5s;
+      &:hover {
+        color: #202020;
+      }
+    }
+  }
 }
