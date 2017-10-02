@@ -1,0 +1,155 @@
+
+/*
+    header
+
+*/
+
+@include breakPoint(0, 639px) {
+  .logo {
+    a {
+      width: 50px;
+    }
+  }
+  .sub-title {
+    font-size: 2.5rem;
+  }
+  .video-title-box {
+    bottom: 80px;
+    h2 {
+      font-size: 2.5rem;
+    }
+    p, a {
+      font-size: 1.4rem;
+    }
+  }
+}
+/*
+    main news section 
+    1step(desktop)
+      - desktop: min-width: 1200px;
+    2step(tablet1, teblet2)
+      - tablet1: 1line 3contents
+        - min-width: 1050px, max-width: 1199px;
+      - tablet2: 1line 2contents
+        - min-width: 710px, max-width: 1049px;
+    3step(mobile)
+      - mobile: max-width: 709px;
+*/
+// tablet1
+@include breakPoint(1050px, 1200px) {
+  .news {
+    li {
+      width: calc(100% / 3);
+    }
+    figcaption {
+      p {
+        &.abbr {
+          -webkit-line-clamp: 12;
+          height: 14.4em;
+        }
+      }
+    }
+  }
+}
+// tablet2
+@include breakPoint(710px, 1049px) {
+  .news {
+    li {
+      width: calc(100% / 2);
+    }
+    figcaption {
+      p {
+        &.abbr {
+          -webkit-line-clamp: 12;
+          height: 14.4em;
+        }
+      }
+    }
+  }
+}
+@include breakPoint(0, 1049px) {
+  .show-me-more {
+    .nav, .more {
+      font-size: 1.8rem;
+    }
+  }
+}
+// mobile
+@include breakPoint(0, 709px) {
+  .news {
+    li {
+      width: 100%;
+    }
+    li.one {
+      p, time {
+        font-size: 2rem;
+      }
+      .who {
+        font-size: 2rem;
+      }
+    }
+    figcaption {
+      p {
+        &.abbr {
+          -webkit-line-clamp: 9;
+          height: 10.8em;
+        }
+      }
+    }
+  }
+}
+
+// show-me-more
+@include breakPoint(0, 709px) {
+  .show-me-more {
+    .nav, .more {
+      font-size: 1.3rem;
+    }
+  }
+}
+@include breakPoint(710px, 1049px) {
+  .show-me-more {
+    .nav, .more {
+      font-size: 2rem;
+    }
+  }
+}
+/*
+  footer
+  1step(desktop)
+    - desktop: min-width: 1000px;
+  2step(tablet)
+    - tablet 
+      - min-width: 730px, max-width: 999px;
+  3step(mobile)
+    - mobile
+      - max-width: 709px;
+*/ 
+
+// tablet
+@include breakPoint(0, 999px) {
+  .contact {
+    & > li:nth-child(1) {
+      width: 100%;
+      p {
+        box-sizing: border-box;
+        width: 70%;
+        padding-left: 1rem;
+      }
+    }
+    & > li:nth-child(2),
+    & > li:nth-child(3) {
+      margin-top: 30px;
+    }
+    & > li:nth-child(2) {
+      width: 58%;
+      margin-right: 10px;
+    }
+    & > li:nth-child(3) {
+      width: 39%;
+    }
+  }
+  .copyright {
+    margin-top: 50px;
+  }
+}

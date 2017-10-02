@@ -97,12 +97,15 @@ main {
     background: rgba(255,255,255,0.8);
     font-size: 1.6rem;
     transition: all 0.25s;
+
     &.circle {
       border-radius: 50%; 
       background: transparent;
       p {
         position: absolute;
         width: 100%;
+        height: initial;
+        line-height: 1;
         text-align: center;
         top: 50%;
         left: 50%;
@@ -121,6 +124,16 @@ main {
     }
     p {
       line-height: 1.5;
+      &.abbr {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 7; /* 라인수 */
+        -webkit-box-orient: vertical;
+        word-wrap:break-word; 
+        line-height: 1.2em;
+        height: 8.4em; 
+      }
     }
     span {
       display: block;

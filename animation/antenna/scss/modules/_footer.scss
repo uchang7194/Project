@@ -1,8 +1,10 @@
 footer {
   position: relative;
-  z-index: 500;
-  padding: 35px 0;
-  width: 1440px;
+  box-sizing: border-box;
+  z-index: 550;
+  padding: 35px 10px;
+  max-width: 1440px;
+  background: #fff;
   margin: 0 auto;
 }
 .contact {

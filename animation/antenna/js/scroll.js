@@ -17,9 +17,9 @@
       video_boxs.forEach(function(data) {
         data.style.top = process_scrollY + 'px';
       });
-
+      
       video_title_box.style.bottom = (video_title_bottom_value + (process_scrollY * -1)) + 'px';
-    })
+    });
   }
 
   init();
