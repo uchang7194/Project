@@ -14,6 +14,11 @@
  * media query breakpoint 
  *
  */
+/**
+ *
+ * clear-fix
+ *
+ */
 @import url("https://fonts.googleapis.com/css?family=Roboto");
 @import url("https://fonts.googleapis.com/css?family=Montserrat");
 /**
@@ -69,35 +74,146 @@ a {
 button {
   border: none;
   padding: 0;
-  background: #fff;
+  background: transparent;
 }
 
 header {
   position: fixed;
   width: 100%;
   background: #000;
-  padding: 28px 0;
 }
 
 .header-inner {
   position: relative;
-  width: 0;
   background: transparent;
+}
+
+.header-inner::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.logo {
+  float: left;
+}
+
+.logo a {
+  display: block;
+}
+
+.logo img {
+  display: none;
+}
+
+.logo img:first-child {
+  display: block;
 }
 
 .mobile-gnb-btn {
   display: none;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 843px) {
-  .mobile-gnb-btn {
-    position: absolute;
-    display: block;
+  .logo {
+    padding: 7.5px 15px;
   }
-  .mobile-gnb-btn width
-span {
+  .mobile-gnb-btn {
+    position: relative;
+    float: right;
     display: block;
-    height: 3px;
+    padding: 9px 10px;
+    margin: 12px 4px;
+  }
+  .mobile-gnb-btn span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    margin-bottom: 5px;
+    background: #fff;
+  }
+  .mobile-gnb-btn span:last-child {
+    margin-bottom: 0;
+  }
+  .gnb {
+    position: absolute;
+    width: 100%;
+    top: 100%;
+    background-color: #4776e6;
+    background-image: linear-gradient(90deg, #4776e6 0%, #8e54e9 100%);
+  }
+  .gnb a {
+    color: #fff;
+    display: block;
+    padding: 10px 15px;
+    line-height: 20px;
+    font-weight: bold;
+  }
+}
+
+@media screen and (min-width: 844px) {
+  header {
+    padding: 28px 0;
+  }
+  .header-inner {
+    width: 750px;
+    margin: 0 auto;
+    height: 73px;
+    line-height: 73px;
+  }
+  .logo a {
+    padding: 15px 0;
+  }
+  .gnb {
+    padding-left: 180px;
+  }
+  .gnb ul::after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+  .gnb li {
+    float: left;
+    margin-right: 10px;
+  }
+  .gnb li:nth-child(7) {
+    margin-right: 15px;
+  }
+  .gnb li:last-child {
+    margin-right: 0;
+  }
+  .gnb li:last-child a {
+    border: 2px solid #fff;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding: 10px 15px;
+    font-size: 1.6rem;
+  }
+  .gnb li:last-child a::after {
+    content: '';
+    display: none;
+  }
+  .gnb a {
+    position: relative;
+    color: #fff;
+    padding: 5px 0;
+  }
+  .gnb a:hover::after {
+    opacity: 1;
+  }
+  .gnb a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    opacity: 0;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    background: #fff;
+    transition: 0.23s all;
   }
 }
 
