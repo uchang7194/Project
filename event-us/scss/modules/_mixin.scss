@@ -1,0 +1,64 @@
+
+/**
+ *
+ * set font-family
+ *
+ */
+
+
+@mixin font-family-setting($font: montserrat) {
+  @if $font == montserrat {
+    font-family: 'Montserrat', sans-serif;
+  } @else if $font == roboto {
+    font-family: 'Roboto', sans-serif;
+  }
+}
+
+
+
+/**
+ *
+ * element centering
+ *
+ */
+
+@mixin centering-el($only: all, $position-value: absolute) {
+
+  @if $only == vertical {
+    position: $position-value;
+    top: 50%;
+    transform: translateY(-50%);
+  } @else if $only == horizontal {
+    position: $position-value;
+    left: 50%;
+    transform: translateX(-50%);
+  } @else if $only == all {
+    position: $position-value;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+
+/**
+ *
+ * media query breakpoint 
+ *
+ */
+
+@mixin breakPoint($min: 0, $max: 0) {
+  @if $min == 0 {
+    @media screen and (max-width: $max) {
+      @content;
+    }
+  } @else if $max == 0 {
+    @media screen and (min-width: $max) {
+      @content;
+    }
+  } @else {
+    @media screen and (min-width: $min) and (max-width: $max) {
+      @content;
+    }
+  }
+}

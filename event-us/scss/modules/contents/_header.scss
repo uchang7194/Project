@@ -1,0 +1,37 @@
+header {
+  position: fixed;
+  // background: transparent;
+  width: 100%;
+  background: #000;
+  padding: 28px 0;
+}
+.header-inner {
+  position: relative;
+  width: 0;
+  background: transparent;
+}
+.mobile-gnb-btn {
+  display: none;
+
+}
+// 1090 843
+
+// mobile, tablet 
+// max-width: 843px;
+@include breakPoint(0, 843px) {
+  .mobile-gnb-btn {
+    position: absolute;
+    display: block;
+    width
+    span {
+      display: block;
+      height: 3px;
+    }
+  }
+}
+
+// desktop 1
+// min-width: 844px, max-width: 1090px
+
+// desktop 2
+// min-width: 1091px

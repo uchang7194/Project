@@ -1,0 +1,11 @@
+{
+  "name": "event-us",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "watch": "node-sass -w scss/ -o css/ --output-style expanded --source-map true"
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,30 @@
+
+/**
+ *
+ * accessibility hidden
+ *
+ */
+
+
+.a11y-hidden {
+  position: absolute;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  clip: rect(0, 0, 0, 0);
+  clip: rect(0 0 0 0);
+}
+
+
+/**
+ *
+ * image 부모영역에 맞춤
+ *
+ */
+
+
+.responsible-img {
+  width: 100%;
+  height: auto;
+}

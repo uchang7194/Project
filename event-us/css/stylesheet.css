@@ -1,0 +1,104 @@
+@charset "UTF-8";
+/**
+ *
+ * set font-family
+ *
+ */
+/**
+ *
+ * element centering
+ *
+ */
+/**
+ *
+ * media query breakpoint 
+ *
+ */
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+@import url("https://fonts.googleapis.com/css?family=Montserrat");
+/**
+ *
+ * accessibility hidden
+ *
+ */
+.a11y-hidden {
+  position: absolute;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  clip: rect(0, 0, 0, 0);
+  clip: rect(0 0 0 0);
+}
+
+/**
+ *
+ * image 부모영역에 맞춤
+ *
+ */
+.responsible-img {
+  width: 100%;
+  height: auto;
+}
+
+html, body,
+h1, h2, h3, h4, h5,
+ul {
+  margin: 0;
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  font-size: 1.4rem;
+  color: #606060;
+  font-family: 'Montserrat', sans-serif;
+}
+
+ul {
+  padding-left: 0;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  border: none;
+  padding: 0;
+  background: #fff;
+}
+
+header {
+  position: fixed;
+  width: 100%;
+  background: #000;
+  padding: 28px 0;
+}
+
+.header-inner {
+  position: relative;
+  width: 0;
+  background: transparent;
+}
+
+.mobile-gnb-btn {
+  display: none;
+}
+
+@media screen and (max-width: 843px) {
+  .mobile-gnb-btn {
+    position: absolute;
+    display: block;
+  }
+  .mobile-gnb-btn width
+span {
+    display: block;
+    height: 3px;
+  }
+}
+
+/*# sourceMappingURL=stylesheet.css.map */

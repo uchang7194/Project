@@ -1,0 +1,30 @@
+html, body,
+h1, h2, h3, h4, h5,
+ul {
+  margin: 0;
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  font-size: $default-font-size;
+  color: $default-font-color;
+  @include font-family-setting();
+}
+
+ul {
+  padding-left: 0;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  border: none;
+  padding: 0;
+  background: #fff;
+}
