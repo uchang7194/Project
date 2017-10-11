@@ -3,7 +3,30 @@ header {
   // background: transparent;
   width: 100%;
   background: #000;
+  transition: $transition-play-time all;
 }
+header.active {
+  background: rgba(255, 255, 255, 0.8);
+
+  .logo {
+    img {
+      opacity: 1px;
+      &:first-child {
+        display: none;
+        opacity: 0;
+      }  
+      &:last-child {
+        display: block;
+        opacity: 1;
+      }
+    }
+  }
+  .gnb {
+    a {
+      color: $header-font-color;
+    }
+  } 
+} 
 .header-inner {
   position: relative;
   background: transparent;
@@ -15,9 +38,19 @@ header {
     display: block;
   }
   img {
+    opacity: 0;
     display: none;
     &:first-child {
       display: block;
+      opacity: 1;
+    }
+  }
+}
+.gnb {
+  li:last-child {
+    a:hover {
+      color: $header-font-color;
+      background: #fff;
     }
   }
 }
@@ -31,8 +64,15 @@ header {
 // mobile, tablet 
 // max-width: 843px;
 @include breakPoint(0, 843px) {
-  .header-inner {
-    
+  header.active {
+    .gnb {
+      background: #fff;
+    }
+    .mobile-gnb-btn {
+      span {
+        background: $header-font-color;
+      }
+    }
   }
   .logo {
     
@@ -57,6 +97,7 @@ header {
   }
   .gnb {
     position: absolute;
+    display: none;
     width: 100%;
     top: 100%;
     background-color: #4776e6;
@@ -73,10 +114,27 @@ header {
 }
 
 // desktop 1
-// min-width: 844px, max-width: 1090px
+// min-width: 844px
 @include breakPoint(844px) {
   header {
     padding: 28px 0;
+  }
+  header.active {
+    padding: 0;
+    .gnb {
+      li:last-child {
+        a {
+          border: 2px solid $header-font-color;
+        }
+        a:hover {
+          color: #fff;
+          background: $header-font-color;
+        }
+      }
+      a::after {
+        background: $header-font-color;
+      }
+    }
   }
   .header-inner {
     width: 750px;
@@ -144,3 +202,18 @@ header {
 }
 // desktop 2
 // min-width: 1091px
+
+@include breakPoint(1091px) {
+  .header-inner {
+    width: 970px;
+  }
+  .gnb {
+    padding-left: 250px;
+    li {
+      margin-right: 25px;
+      &:nth-child(7) {
+        margin-right: 70px;
+      }
+    }
+  }
+}

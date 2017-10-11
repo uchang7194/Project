@@ -12,6 +12,7 @@ body {
   font-size: $default-font-size;
   color: $default-font-color;
   @include font-family-setting();
+  height: 400vh;
 }
 
 ul {

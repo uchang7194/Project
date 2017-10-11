@@ -60,6 +60,7 @@ body {
   font-size: 1.4rem;
   color: #606060;
   font-family: 'Montserrat', sans-serif;
+  height: 400vh;
 }
 
 ul {
@@ -81,6 +82,29 @@ header {
   position: fixed;
   width: 100%;
   background: #000;
+  transition: 0.23s all;
+}
+
+header.active {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+header.active .logo img {
+  opacity: 1px;
+}
+
+header.active .logo img:first-child {
+  display: none;
+  opacity: 0;
+}
+
+header.active .logo img:last-child {
+  display: block;
+  opacity: 1;
+}
+
+header.active .gnb a {
+  color: #725ce6;
 }
 
 .header-inner {
@@ -103,11 +127,18 @@ header {
 }
 
 .logo img {
+  opacity: 0;
   display: none;
 }
 
 .logo img:first-child {
   display: block;
+  opacity: 1;
+}
+
+.gnb li:last-child a:hover {
+  color: #725ce6;
+  background: #fff;
 }
 
 .mobile-gnb-btn {
@@ -116,6 +147,12 @@ header {
 }
 
 @media screen and (max-width: 843px) {
+  header.active .gnb {
+    background: #fff;
+  }
+  header.active .mobile-gnb-btn span {
+    background: #725ce6;
+  }
   .logo {
     padding: 7.5px 15px;
   }
@@ -138,6 +175,7 @@ header {
   }
   .gnb {
     position: absolute;
+    display: none;
     width: 100%;
     top: 100%;
     background-color: #4776e6;
@@ -155,6 +193,19 @@ header {
 @media screen and (min-width: 844px) {
   header {
     padding: 28px 0;
+  }
+  header.active {
+    padding: 0;
+  }
+  header.active .gnb li:last-child a {
+    border: 2px solid #725ce6;
+  }
+  header.active .gnb li:last-child a:hover {
+    color: #fff;
+    background: #725ce6;
+  }
+  header.active .gnb a::after {
+    background: #725ce6;
   }
   .header-inner {
     width: 750px;
@@ -214,6 +265,21 @@ header {
     height: 2px;
     background: #fff;
     transition: 0.23s all;
+  }
+}
+
+@media screen and (min-width: 1091px) {
+  .header-inner {
+    width: 970px;
+  }
+  .gnb {
+    padding-left: 250px;
+  }
+  .gnb li {
+    margin-right: 25px;
+  }
+  .gnb li:nth-child(7) {
+    margin-right: 70px;
   }
 }
 
