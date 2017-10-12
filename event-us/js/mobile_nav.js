@@ -15,6 +15,7 @@
       nav.slideToggle(200);
     });
   }
+  
   init();
 
 }(window, jQuery));

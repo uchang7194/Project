@@ -1,8 +1,8 @@
 header {
   position: fixed;
-  // background: transparent;
+  z-index: 9999;
+  background: transparent;
   width: 100%;
-  background: #000;
   transition: $transition-play-time all;
 }
 header.active {
@@ -66,7 +66,7 @@ header.active {
 @include breakPoint(0, 843px) {
   header.active {
     .gnb {
-      background: #fff;
+      background: rgba(255, 255, 255, 0.8);
     }
     .mobile-gnb-btn {
       span {
