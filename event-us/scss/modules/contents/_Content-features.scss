@@ -1,0 +1,174 @@
+// common
+.features {
+  padding: 150px 0;
+  background: #f8f8f8;
+}
+.features-inner {
+  h2 {
+    @extend %section-h2;
+  }
+  .features-hr {
+    @extend %section-hr;
+  }
+  .features-comment {
+    @extend %section-comment;
+  }
+}
+
+.features-list {
+  text-align: center;
+  @include clear-fix;
+
+  & > li {
+    float: left;
+    padding: 0 15px;
+    box-sizing: border-box;
+  }
+
+  .features-item-img {
+    
+    position: relative;
+    background: linear-gradient(0deg, #4776e6 0%, #8E54E9 100%);
+    width: 64px;
+    height: 64px;
+    margin: 0 auto;
+    border-radius: 50%;
+
+    span {
+      @include centering-el(all);
+      width: 60px;
+      height: 60px;
+      line-height: 62px;
+      text-align: center;
+      font-size: 26px;
+      color: #4776e6;
+      border-radius: 50%;
+      background: #fff;
+    }
+  }
+  
+  h3 {
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: #606060;
+    padding-top: 9px;
+    padding-bottom: 3px;
+    margin-bottom: 10px;
+  }
+  .feature-submenu {
+    li {
+      font-weight: 400;
+      color: #666;
+      margin-bottom: 10px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+// devices
+// mobile
+@include breakPoint(0, $mobile-size) {
+  .features-inner {
+    width: $mobile-width;
+    margin: 0 auto;
+  }
+  .features-list {
+    li {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+    .wrapper {
+      max-width: 450px;
+      margin: 0 auto;
+    }
+  }
+}
+// tablet
+@include breakPoint($tablet-min-size, $tablet-max-size) {
+  .features-inner {
+    width: $tablet-width;
+    margin: 0 auto;
+  }
+  .features-list {
+    & > li {
+      width: 50%;
+      margin-bottom: 20px;
+    }
+  }
+}
+
+// mobile, tablet animation 
+@include breakPoint(0, $tablet-max-size) {
+  .features-list {
+    & > li {
+      position: relative;
+      opacity: 0;
+      transition: all 0.5s;
+      &:nth-child(1) {
+        left: -50px;
+        &.active {
+          opacity: 1;
+          left: 0;
+        }
+      }
+      &:nth-child(2) {
+        right: -50px; 
+        &.active {
+          opacity: 1;
+          right: 0;
+        }
+      }
+      &:nth-child(3) {
+        left: -50px;
+        &.active {
+          opacity: 1;
+          left: 0;
+        }
+      }
+      &:nth-child(4) {
+        right: -50px; 
+        &.active {
+          opacity: 1;
+          right: 0;
+        }
+      }
+    }
+
+  }
+}
+
+// desktop
+@include breakPoint($desktop-size) {
+  .features-inner {
+    width: $desktop-width;
+    margin: 0 auto;
+  }
+  .features-list {
+    position: relative;
+    background: url('../assets/contents/phone-lines.png') no-repeat;
+    background-size: 470px auto;
+    background-position: center;
+    height: 660px;
+    & > li {
+      position: absolute;
+      width: calc(100% / 3);
+    }
+    li:nth-child(1) {
+      left: 0;
+      top: 50px;
+    }
+    li:nth-child(2) {
+      right: 0;
+      top: 20px;
+    }
+    li:nth-child(3) {
+      left: 20px;
+      bottom: -30px;
+    }
+    li:nth-child(4) {
+      right: -10px;
+      bottom: 50px;
+    }
+  }
+}

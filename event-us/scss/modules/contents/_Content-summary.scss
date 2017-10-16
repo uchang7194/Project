@@ -1,0 +1,147 @@
+.summary {
+  padding: 150px 0;
+  h2 {
+    @extend %section-h2;
+  }
+  .summary-comment {
+    @extend %section-comment;
+  }
+  .summary-hr {
+    @extend %section-hr;
+  }
+  .summary-list {
+    @include clear-fix;
+    &.active {
+      li:nth-child(even) {
+        // down-up
+        opacity: 1;
+        bottom: 0;
+      }
+      li:nth-child(odd) {
+        opacity: 1;
+        top: 0;
+      }
+    }
+    li {
+      $move-value: 50px;
+      position: relative;
+      float: left;
+      width: 25%;
+      transition: all 0.5s;
+      &:hover {
+        .wrapper {
+          box-shadow: 0 0 20px 0 #aaa;
+        }
+      }
+      &:nth-child(even) {
+        opacity: 0;
+        bottom: -#{$move-value};
+      }
+      &:nth-child(odd) {
+        opacity: 0;
+        top: -#{$move-value};
+      }
+    }
+    .summary-item-img {
+      
+    }
+    span {
+      position: relative;
+      display: inline-block;
+      width: 6.4rem;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 6.4rem;
+      color: #4776e6;
+    }
+    hr {
+      margin: 20px auto;
+      width: 30px;
+      height: 2px;
+      background-image: linear-gradient(0deg, #4776e6 0%, #8E54E9 100%);
+    }
+    h3, p {
+      text-align: center;
+    }
+    h3 {
+      text-transform: uppercase;
+      font-size: 1.8rem;
+      margin: 10px 0;
+      line-height: 30px;
+      font-weight: bolder;
+    }
+    p {
+      line-height: 1.86;
+      font-weight: 400;
+      font-size: 1.5rem;
+    }
+    .wrapper {
+      // animation
+      box-sizing: border-box;
+      transition: all 0.25s;
+      padding: 20px 15px 15px;
+      margin: 20px 15px 15px;
+      position: relative;
+      &::after {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%) rotate(45deg);
+        width: 15px;
+        height: 15px;
+        margin-top: -10px;
+        background: #fff;
+      }
+    }
+  }
+}
+
+// mobile tablet
+@include breakPoint(0, 843px) {
+  .summary {
+    .summary-list {
+      li {
+        width: 100%;
+        margin-bottom: 20px;
+      }
+      .wrapper {
+        max-width: 360px;
+        margin: 0 auto;
+      }
+    }
+  }
+  .summary-inner {
+    padding: 0 20px;
+  }
+}
+
+// desktop
+@include breakPoint(844px) {
+  .summary-inner {
+    width: 750px;
+    margin: 0 auto;
+  }
+  .summary-comment {
+    width: 750px;
+    margin: 0 auto;
+    
+  }
+} 
+@include breakPoint(1091px) {
+  .summary-inner {
+    width: 970px;
+    margin: 0 auto;
+  }
+}
+
+@include breakPoint(844px, 1091px) {
+  .summary {
+    .summary-list {
+      li {
+        width: 50%;
+      }
+    }
+  }
+}

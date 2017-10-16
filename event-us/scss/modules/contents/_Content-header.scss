@@ -122,6 +122,7 @@ header.active {
   header.active {
     padding: 0;
     .gnb {
+      display: block;
       li:last-child {
         a {
           border: 2px solid $header-font-color;

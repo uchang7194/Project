@@ -1,0 +1,95 @@
+// common
+.setting-video {
+  padding: 150px 0;
+  background-color: #4776e6;
+  background-image: linear-gradient(0deg, #4776e6 0%, #8E54E9 100%)
+}
+.setting-video-inner {
+  padding: 0 15px;
+  text-align: center;
+  article {
+    margin-bottom: 150px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  button {
+    display: block;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 20px auto;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    cursor: pointer;
+
+    .fa {
+      font-size: 36px;
+      color: #fff;
+    }
+  }
+  h3 {
+    font-size: 4rem;
+    color: #fff;
+    margin-bottom: 20px;
+  }
+  p {
+    font-size: 2rem;
+    color: #fff;
+    margin-bottom: 20px;
+  }
+}
+.video-popup {
+  position: fixed;
+  display: none;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 10000;
+
+  &.active {
+    display: block;
+  }
+  .close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: #fff;
+    font-size: 2rem;
+    cursor: pointer;
+  }
+  iframe {
+    @include centering-el(all);
+    width: 80%;
+    height: auto;
+  }
+}
+// mobile
+@include breakPoint(0, $mobile-size) {
+  .setting-video-inner {
+    article {
+      margin-bottom: 80px;
+    }
+    h3 {
+      font-size: 1.8rem;
+    }
+    p {
+      font-size: 1.4rem;
+    }
+  }
+}
+// tablet
+@include breakPoint($tablet-min-size, $tablet-max-size) {
+  .setting-video-inner {
+    h3 {
+      font-size: 2.4rem;
+    }
+    p {
+      font-size: 1.8rem;
+    }
+  }
+}
+// desktop
+@include breakPoint($desktop-size) {
+}

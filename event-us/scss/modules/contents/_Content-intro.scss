@@ -1,4 +1,4 @@
-.summary {
+.intro {
   position: relative;
   overflow: hidden;
   height: 750px;
@@ -66,7 +66,7 @@
     transform: scale(1);
   }
 }
-.summary-inner {
+.intro-inner {
   position: absolute;
   z-index: 200;
   top: 0;
@@ -116,7 +116,7 @@
     }
   }
 }
-.summary-inner {
+.intro-inner {
   .img-box {
     position: absolute;
     z-index: 1000;
@@ -147,17 +147,17 @@
   }
 }
 @include breakPoint(0, 432px) {
-  .summary {
+  .intro {
     height: 825px;
   }
 }
 
 // desktop
 @include breakPoint(844px, 1090px) {
-  .summary {
+  .intro {
     height: 860px;
   }
-  .summary-inner {
+  .intro-inner {
     width: 750px;
   }
   .content {
@@ -168,10 +168,10 @@
   
 }
 @include breakPoint(1091px) {
-  .summary {
+  .intro {
     height: 1000px;
   }
-  .summary-inner {
+  .intro-inner {
     width: 970px;
   }
   .content {
@@ -188,7 +188,7 @@
   
 }
 @include breakPoint(844px) {
-  .summary-inner {
+  .intro-inner {
     @include centering-el(horizontal);
     .img-box {
       img {

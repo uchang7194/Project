@@ -3,7 +3,11 @@
     header
 
 */
-
+@include breakPoint(640px, 0) {
+  .video-title-box {
+    bottom: 180px;
+  }
+}
 @include breakPoint(0, 639px) {
   .logo {
     a {

@@ -1,0 +1,23 @@
+// variable
+$move-size: 50px;
+
+@keyframes up-down {
+  0% {
+    opacity: 0;
+    top: -#{$move-size};
+  }
+  100% {
+    opacity: 1;
+    top: 0;
+  }
+}
+@keyframes down-up {
+  0% {
+    opacity: 0;
+    bottom: -#{$move-size};
+  }
+  100% {
+    opacity: 1;
+    bottom: 0;
+  }
+}
