@@ -1,0 +1,63 @@
+.carousel-wrapper {
+  position: relative;
+  overflow: hidden;
+
+  & > ul, .controller-list {
+    @include clear-fix;
+    & > li {
+      float: left;
+    }
+  }
+  & > ul {
+    position: relative;
+    & > li {
+      box-sizing: border-box;
+      padding: 0 15px;
+    }
+  }
+  img {
+    width: 100%;
+    height: auto;
+  }
+
+  .controller-wrapper {
+    @include centering-el(horizontal);
+    bottom: 20px;
+    z-index: 999;
+    li {
+      margin-right: 7px;
+      
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+    button {
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background: #fff;
+      cursor: pointer;
+      &:hover {
+        background-color: #4776e6;
+        background-image: linear-gradient(0deg, #4776e6 0%, #8E54E9 100%);
+      }
+    }
+  }
+  
+  .move-btn {
+    @include centering-el(vertical);
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: 1px solid #4776e6;
+    background: #fff;
+    cursor: pointer;
+
+    &.prev {
+      left: 20px;
+    }
+    &.next {
+      right: 20px;
+    }
+  }
+}

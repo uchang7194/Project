@@ -14,7 +14,9 @@
   <link rel="stylesheet" href="./css/stylesheet.css">
   <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="./js/jquery-3.2.1.js"></script>
   <script src="./js/utils.js"></script>
+  <script src="./js/carousel.js"></script>
 </head>
 <body>
   
@@ -271,8 +273,47 @@
         </iframe>
       </div>
     </section>
+    <section class="references">
+      <div class="references-innner">
+        <h2>다양한 레퍼런스들</h2>
+        <hr class="references-hr">
+        <p class="references-comment">
+          30여가지의 기능들을 바탕으로 모든 행사분야에 필요한 플랫폼을 제공합니다. 
+          현재 대부분의 행사분야에서 사용하고 있습니다.
+        </p>
+        <div class="carousels">
+          <ul class="references-all">
+            <li>
+              <img src="./assets/contents/1 (1).jpg" alt="">
+            </li>
+            <li>
+              <img src="./assets/contents/1 (1).jpg" alt="">
+            </li>
+            <li>
+              <img src="./assets/contents/1 (1).jpg" alt="">
+            </li>
+            <li>
+              <img src="./assets/contents/1 (1).jpg" alt="">
+            </li>
+            <li>
+              <img src="./assets/contents/1 (1).jpg" alt="">
+            </li>
+            <li>
+              <img src="./assets/contents/1 (1).jpg" alt="">
+            </li>
+            <li>
+              <img src="./assets/contents/1 (1).jpg" alt="">
+            </li>
+          </ul>
+        </div>
+      </div>
+      <script>
+        new Carousel('.references-all', {
+          view: 3
+        });
+      </script>
+    </section>
   </div>
-  <script src="./js/jquery-3.2.1.js"></script>
   <script src="./js/scroll.js"></script>
   <script src="./js/mobile_nav.js"></script>
   <script src="./js/video_popup.js"></script>
