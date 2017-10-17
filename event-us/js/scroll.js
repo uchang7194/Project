@@ -21,7 +21,7 @@
 
   function bind() {
     window.addEventListener('scroll', function() {
-      var scrollY = window.scrollY;
+      var scrollY = document.documentElement.scrollTop || document.body.scrollTop;
       var depth = 50;
 
       if( scrollY !== 0 ) {
@@ -43,21 +43,48 @@
           Utils.addClass(feature_info.el, 'active');
         }
       }
+      // console.log('scroll');
     });
 
-    var reset_points = [844, 1091];
-    window.addEventListener('resize', function() {
-      var depth = 30;
-      innerWidth = this.innerWidth;
-      
-      for( var i = 0, len = reset_points.length; i < len; i++ ) {
+  //   window.addEventListener('wheel', function() {
+  //     // console.log('???');
+  //     var scrollY = window.scrollY;
+  //     var depth = 50;
 
-        if( isShowSectionsLimit(innerWidth, reset_points[i]) ) {
-          resetDataInfo(features_target, features_list_info);
-          // console.log(features_list_info);
-        }
-      }
-    })
+  //     if( scrollY !== 0 ) {
+  //       header.setAttribute('class', 'active');
+  //     } else {
+  //       header.setAttribute('class', '');
+  //     }
+
+  //     // summary add class
+
+  //     if( isShowSectionsLimit(scrollY, summary_list_offsetY) ) {
+  //       Utils.addClass(summary_list, 'active');
+  //     }
+
+  //     // feature add class
+  //     for( var i = 0, len = features_list_info.length; i < len; i++ ) {
+  //       var feature_info = features_list_info[i];
+  //       if( isShowSectionsLimit(scrollY, feature_info.offsetY) ) {
+  //         Utils.addClass(feature_info.el, 'active');
+  //       }
+  //     }
+  //   });
+
+  //   var reset_points = [844, 1091];
+  //   window.addEventListener('resize', function() {
+  //     var depth = 30;
+  //     innerWidth = this.innerWidth;
+      
+  //     for( var i = 0, len = reset_points.length; i < len; i++ ) {
+
+  //       if( isShowSectionsLimit(innerWidth, reset_points[i]) ) {
+  //         resetDataInfo(features_target, features_list_info);
+  //         // console.log(features_list_info);
+  //       }
+  //     }
+  //   })
   }
 
   function isShowSectionsLimit(scrollY, section_offsetY) {
@@ -71,7 +98,7 @@
   }
 
   function resetDataInfo(target, info) {
-    document.querySelectorAll(target).forEach(function(data) {
+    Array.prototype.forEach.call(document.querySelectorAll(target), function(data){
       info.push({
         el: data,
         offsetY: data.offsetTop
