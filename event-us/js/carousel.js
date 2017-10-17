@@ -20,7 +20,8 @@
     // options
     var options = {
       view: 1,
-      resize_sizes: [844, 1091]
+      resize_sizes: [844, 1091],
+      
     }
     // variable
     var parent_width = 0, ul_width = 0;
@@ -44,9 +45,9 @@
   
       window.addEventListener('resize', function() {
         var innerWidth = this.innerWidth, depth = 50;
+        setTargetDOMStyle();
         current_left = (parent_width * current_move_count);
         document.querySelector(target_str).style.left = current_left + 'px';      
-        setTargetDOMStyle();
       });
       
       prev_btn.addEventListener('click', function() {
@@ -55,7 +56,8 @@
         if( current_move_count > 0 ) {
           current_move_count = -max_count;
         } 
-        current_left = parent_width * current_move_count;
+        console.log('prev current_move_count: ', current_move_count);
+        current_left = (parent_width * current_move_count);
         $(target_str).animate({ left: current_left + 'px' }, 500);
       });      
       next_btn.addEventListener('click', function() {
@@ -65,7 +67,8 @@
         if( current_move_count < -max_count ) {
           current_move_count = 0;
         }
-        current_left = parent_width * current_move_count;
+        console.log('next current_move_count: ', current_move_count);
+        current_left = (parent_width * current_move_count);
         $(target_str).animate({ left: current_left + 'px' }, 500);
       });      
 
@@ -78,16 +81,18 @@
     }
     
     function controllerFn() {
-      var index = this.getAttribute('data-index');
+      var index = -parseInt(this.getAttribute('data-index'));
       console.log('current_move_count', current_move_count);
       console.log('index', index);
-      if( current_move_count > index ) {
-        current_left += (parent_width * (current_move_count - index));  
-      } else if ( current_move_count < index ) {
-        current_left -= (parent_width * (index - current_move_count));
-      } 
-      console.log('current_left', current_left);
+      // if( current_move_count > index ) {
+      //   current_left = -(parent_width * (current_move_count - index));  
+      // } else if ( current_move_count < index ) {
+      //   current_left = -(parent_width * (index - current_move_count));
+      // } 
+      current_left = parent_width * index;
+
       current_move_count = index;
+      console.log('controller current_move_count', current_move_count);
       $(target_str).animate({ left: current_left + 'px' }, 500);
     }
     var extendOptions = function(new_options) {
@@ -148,6 +153,9 @@
       var li_count = target_items.length;
 
       parent_width = getParentWidth(target_dom.parentNode);
+      console.log("===============");
+      console.log("parent_width", parent_width);
+      console.log("===============");
       ul_width = ((parent_width * li_count) / options.view);
       ul.style.width = ul_width + 'px';
       
@@ -170,6 +178,10 @@
       return parseInt(global.getComputedStyle(parent).width);
     }
 
+    var replaceTargetDom = function(parent, new_target, old_target) {
+      
+      return parent.replaceChild(new_target, old_target);
+    }
     return {
       init: init,
       bind: bind

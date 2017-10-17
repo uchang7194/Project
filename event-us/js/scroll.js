@@ -72,19 +72,19 @@
   //     }
   //   });
 
-  //   var reset_points = [844, 1091];
-  //   window.addEventListener('resize', function() {
-  //     var depth = 30;
-  //     innerWidth = this.innerWidth;
+    var reset_points = [844, 1091];
+    window.addEventListener('resize', function() {
+      var depth = 30;
+      innerWidth = this.innerWidth;
       
-  //     for( var i = 0, len = reset_points.length; i < len; i++ ) {
+      for( var i = 0, len = reset_points.length; i < len; i++ ) {
 
-  //       if( isShowSectionsLimit(innerWidth, reset_points[i]) ) {
-  //         resetDataInfo(features_target, features_list_info);
-  //         // console.log(features_list_info);
-  //       }
-  //     }
-  //   })
+        if( isShowSectionsLimit(innerWidth, reset_points[i]) ) {
+          resetDataInfo(features_target, features_list_info);
+          // console.log(features_list_info);
+        }
+      }
+    })
   }
 
   function isShowSectionsLimit(scrollY, section_offsetY) {
