@@ -25,34 +25,7 @@
     position: relative;
     opacity: 0;
     transition: all 0.5s;
-    &:nth-child(1) {
-      left: -50px;
-      &.active {
-        opacity: 1;
-        left: 0;
-      }
-    }
-    &:nth-child(2) {
-      right: -50px; 
-      &.active {
-        opacity: 1;
-        right: 0;
-      }
-    }
-    &:nth-child(3) {
-      left: -50px;
-      &.active {
-        opacity: 1;
-        left: 0;
-      }
-    }
-    &:nth-child(4) {
-      right: -50px; 
-      &.active {
-        opacity: 1;
-        right: 0;
-      }
-    }
+    
   }
 
   .features-item-img {
@@ -132,7 +105,36 @@
 @include breakPoint(0, $tablet-max-size) {
   .features-list {
     
-
+    & > li {
+      &:nth-child(1) {
+        left: -50px;
+        &.active {
+          opacity: 1;
+          left: 0;
+        }
+      }
+      &:nth-child(2) {
+        right: -50px; 
+        &.active {
+          opacity: 1;
+          right: 0;
+        }
+      }
+      &:nth-child(3) {
+        left: -50px;
+        &.active {
+          opacity: 1;
+          left: 0;
+        }
+      }
+      &:nth-child(4) {
+        right: -50px; 
+        &.active {
+          opacity: 1;
+          right: 0;
+        }
+      }
+    }
   }
 }
 
@@ -143,30 +145,45 @@
     margin: 0 auto;
   }
   .features-list {
-    position: relative;
+    width: 100%;
     background: url('../assets/contents/phone-lines.png') no-repeat;
     background-size: 470px auto;
     background-position: center;
     height: 660px;
     & > li {
-      position: absolute;
       width: calc(100% / 3);
-    }
-    li:nth-child(1) {
-      left: 0;
-      top: 50px;
-    }
-    li:nth-child(2) {
-      right: 0;
-      top: 20px;
-    }
-    li:nth-child(3) {
-      left: 20px;
-      bottom: -30px;
-    }
-    li:nth-child(4) {
-      right: -10px;
-      bottom: 50px;
+      &:nth-child(1) {
+        left: -20%;
+        top: 50px;
+        &.active {
+          left: 0;
+          opacity: 1;
+        }
+      }
+      &:nth-child(2) {
+        right: -50%;
+        top: 20px;
+        &.active {
+          right: -35%;
+          opacity: 1;
+        }
+      }
+      &:nth-child(3) {
+        left: -80%;
+        bottom: -70%;
+        &.active {
+          left: -65%;
+          opacity: 1;
+        }
+      }
+      &:nth-child(4) {
+        right: -90%;
+        bottom: -20%;
+        &.active {
+          right: -70%;
+          opacity: 1;
+        }
+      }
     }
   }
 }

@@ -735,6 +735,7 @@ header.active .gnb a {
   left: 50%;
   transform: translateX(-50%);
   font-size: 6.4rem;
+  margin: 0 auto;
   color: #4776e6;
 }
 
@@ -845,42 +846,6 @@ header.active .gnb a {
   transition: all 0.5s;
 }
 
-.features-list > li:nth-child(1) {
-  left: -50px;
-}
-
-.features-list > li:nth-child(1).active {
-  opacity: 1;
-  left: 0;
-}
-
-.features-list > li:nth-child(2) {
-  right: -50px;
-}
-
-.features-list > li:nth-child(2).active {
-  opacity: 1;
-  right: 0;
-}
-
-.features-list > li:nth-child(3) {
-  left: -50px;
-}
-
-.features-list > li:nth-child(3).active {
-  opacity: 1;
-  left: 0;
-}
-
-.features-list > li:nth-child(4) {
-  right: -50px;
-}
-
-.features-list > li:nth-child(4).active {
-  opacity: 1;
-  right: 0;
-}
-
 .features-list .features-item-img {
   position: relative;
   background: linear-gradient(0deg, #4776e6 0%, #8E54E9 100%);
@@ -950,37 +915,83 @@ header.active .gnb a {
   }
 }
 
+@media screen and (max-width: 1090px) {
+  .features-list > li:nth-child(1) {
+    left: -50px;
+  }
+  .features-list > li:nth-child(1).active {
+    opacity: 1;
+    left: 0;
+  }
+  .features-list > li:nth-child(2) {
+    right: -50px;
+  }
+  .features-list > li:nth-child(2).active {
+    opacity: 1;
+    right: 0;
+  }
+  .features-list > li:nth-child(3) {
+    left: -50px;
+  }
+  .features-list > li:nth-child(3).active {
+    opacity: 1;
+    left: 0;
+  }
+  .features-list > li:nth-child(4) {
+    right: -50px;
+  }
+  .features-list > li:nth-child(4).active {
+    opacity: 1;
+    right: 0;
+  }
+}
+
 @media screen and (min-width: 1091px) {
   .features-inner {
     width: 970px;
     margin: 0 auto;
   }
   .features-list {
-    position: relative;
+    width: 100%;
     background: url("../assets/contents/phone-lines.png") no-repeat;
     background-size: 470px auto;
     background-position: center;
     height: 660px;
   }
   .features-list > li {
-    position: absolute;
     width: calc(100% / 3);
   }
-  .features-list li:nth-child(1) {
-    left: 0;
+  .features-list > li:nth-child(1) {
+    left: -20%;
     top: 50px;
   }
-  .features-list li:nth-child(2) {
-    right: 0;
+  .features-list > li:nth-child(1).active {
+    left: 0;
+    opacity: 1;
+  }
+  .features-list > li:nth-child(2) {
+    right: -50%;
     top: 20px;
   }
-  .features-list li:nth-child(3) {
-    left: 20px;
-    bottom: -30px;
+  .features-list > li:nth-child(2).active {
+    right: -35%;
+    opacity: 1;
   }
-  .features-list li:nth-child(4) {
-    right: -10px;
-    bottom: 50px;
+  .features-list > li:nth-child(3) {
+    left: -80%;
+    bottom: -70%;
+  }
+  .features-list > li:nth-child(3).active {
+    left: -65%;
+    opacity: 1;
+  }
+  .features-list > li:nth-child(4) {
+    right: -90%;
+    bottom: -20%;
+  }
+  .features-list > li:nth-child(4).active {
+    right: -70%;
+    opacity: 1;
   }
 }
 
