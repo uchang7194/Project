@@ -13,6 +13,10 @@
     // - options 추가
 
     this.carousel = null;
+    this.max_page = 0;
+    this.current_page = 0;
+    this.move_distance = 0;
+    this.current_distance = 0;
     this.options = {
 
     }
@@ -43,6 +47,7 @@
       this.createCarouselComp();
       console.log('new carousel: ', this.carousel);
       this.setCreatedCarouselCompStyle();
+      this.setCarouselInfo();
       this.bind();
     }
     
@@ -119,17 +124,74 @@
           
     }
 
+    this.setCarouselInfo = function() {
 
+      var carousel = this.carousel;
+
+      // 1. carousel li가 몇개인지
+      this.max_page = carousel.querySelectorAll('li').length;
+      // 2. parent_width
+      this.setMoveDistance();
+
+    }
+    this.setMoveDistance = function() {
+      this.move_distance = parseInt(global.getComputedStyle(this.carousel).width); 
+    }
+    // Event binding
     this.bind = function() {
+
+      var carousel = this.carousel,
+          prev_btn = carousel.querySelector('.move-btn.prev'),
+          next_btn = carousel.querySelector('.move-btn.next');
+
       // 1. resize 
-      
       window.addEventListener('resize', this.resizeBrowser.bind(this));
+
+      // 2. prev, next click Event
+      prev_btn.addEventListener('click', this.moveUlElement.bind(this, 'prev'));
+      next_btn.addEventListener('click', this.moveUlElement.bind(this, 'next'));
     }
 
     this.resizeBrowser = function() {
       // 1. 브라우저가 resize될 때마다 carousel의 스타일을 재정의 해줌. 
       this.setCreatedCarouselCompStyle();
+      // 2. 브라우저가 resize될 때마다 carousel-wrapper의 width값을 재정의 해줌.
+      this.setMoveDistance();
+      // 3. 브라우저가 resize될 때마다 ul의 left를 재정의 해줌
+      this.moveFn(this.move_distance * this.current_page);
     }
+    this.moveUlElement = function(direction) {
+      var max_page = this.max_page,
+          current_page = this.current_page,
+          current_distance = this.current_distance;
+
+      if( direction === 'next' ) {
+
+        (current_page >= (max_page - 1)) ? current_page = 0 : current_page+=1;
+
+        
+      } else if( direction === 'prev' ) {
+        
+        (current_page <= 0 ) ? current_page = (max_page - 1): current_page-=1;
+
+      }
+
+      current_distance = this.move_distance * current_page;
+      
+      this.moveFn(current_distance);
+
+      this.current_page = current_page;
+      this.current_distance = current_distance;
+      
+    }
+    this.moveFn = function(current_distance) {
+      var ul = this.carousel.querySelector('ul');
+
+      ul.style.left = -(current_distance) + 'px';
+    }
+
+
+
     this.init(target);
   }
   
