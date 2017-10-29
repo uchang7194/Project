@@ -1,5 +1,10 @@
-(function(global, U){
+(function(global, $, U){
   'use strict';
+
+  if( !$ ) {
+    console.warn('Carouse relies on jquery.');
+    return;
+  }
 
   if( global.Carousel ) {
     console.warn('Already Carousel is exist');
@@ -198,6 +203,7 @@
      */
     this.controllerFn = function(index) {
       console.log(index);
+      this.current_page = index;
       this.moveFn(this.move_distance * index);
     }
     /**
@@ -233,9 +239,9 @@
      * @description 실질적으로 ul을 움직이는 함수.
      */
     this.moveFn = function(current_distance) {
-      var ul = this.carousel.querySelector('ul');
+      var ul = $(this.carousel).find('ul');
 
-      ul.style.left = -(current_distance) + 'px';
+      ul.stop(true, true).animate({ left: -(current_distance) + 'px' }, 300);
     }
 
 
@@ -244,7 +250,7 @@
   
   global.Carousel = Carousel;
 
-}( window, function() {
+}( window, window.jQuery, function() {
 
   // utils
   // validation

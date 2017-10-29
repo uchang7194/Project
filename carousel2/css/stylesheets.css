@@ -25,6 +25,12 @@ body {
 
 .carousel-wrapper .controller-wrapper .controller {
   margin-right: 8px;
+  border: 0 none;
+  padding: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  cursor: pointer;
 }
 
 .carousel-wrapper .controller-wrapper .controller:last-child {
@@ -35,14 +41,35 @@ body {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
+  background: #aaa;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  padding: 0;
+  border: 0 none;
+  cursor: pointer;
+}
+
+.carousel-wrapper .move-btn::after {
+  content: '';
+  display: block;
+  color: #202020;
 }
 
 .carousel-wrapper .move-btn.prev {
   left: 30px;
 }
 
+.carousel-wrapper .move-btn.prev::after {
+  content: '<';
+}
+
 .carousel-wrapper .move-btn.next {
   right: 30px;
+}
+
+.carousel-wrapper .move-btn.next::after {
+  content: '>';
 }
 
 .carousel-wrapper ul {
