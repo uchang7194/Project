@@ -1,0 +1,65 @@
+html, body {
+  margin: 0;
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  font-size: 1.4rem;
+}
+
+.carousel-wrapper {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.carousel-wrapper .controller-wrapper {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.carousel-wrapper .controller-wrapper .controller {
+  margin-right: 8px;
+}
+
+.carousel-wrapper .controller-wrapper .controller:last-child {
+  margin-right: 0;
+}
+
+.carousel-wrapper .move-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.carousel-wrapper .move-btn.prev {
+  left: 30px;
+}
+
+.carousel-wrapper .move-btn.next {
+  right: 30px;
+}
+
+.carousel-wrapper ul {
+  padding: 0;
+  margin: 0;
+}
+
+.carousel-wrapper ul::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.carousel-wrapper ul li {
+  list-style: none;
+  float: left;
+  min-height: 300px;
+}
+
+/*# sourceMappingURL=stylesheets.css.map */

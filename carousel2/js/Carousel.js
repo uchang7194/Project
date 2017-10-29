@@ -42,6 +42,8 @@
       console.log('old carousel: ', this.carousel);
       this.createCarouselComp();
       console.log('new carousel: ', this.carousel);
+      this.setCreatedCarouselCompStyle();
+      this.bind();
     }
     
     this.createCarouselComp = function() {
@@ -52,8 +54,8 @@
             - li
           - Controller_wrapper
             - controller * li_count
-          - prev_btn
-          - next_btn
+          - move-btn.prev_btn
+          - move-btn.next_btn
       */
 
       // target Element
@@ -97,8 +99,37 @@
       this.carousel = carousel_wrapper;
     }
 
+    this.setCreatedCarouselCompStyle = function() {
+      
+      // 1. ul을 부모의 넓이 * li크기만큼 변경
+      // 2. li크기를 부모크기만큼 변경
+
+      var parent = this.carousel.parentNode,
+          ul = parent.querySelector('ul'),
+          li = parent.querySelectorAll('li');
+
+      var parent_width = parseInt(window.getComputedStyle(parent).width);
+
+      // 1.
+      ul.style.width = (parent_width * li.length) + 'px';
+      // 2.
+      for(var i = 0, len = li.length; i < len; i++) {
+        li[i].style.width = parent_width + 'px';
+      }
+          
+    }
 
 
+    this.bind = function() {
+      // 1. resize 
+      
+      window.addEventListener('resize', this.resizeBrowser.bind(this));
+    }
+
+    this.resizeBrowser = function() {
+      // 1. 브라우저가 resize될 때마다 carousel의 스타일을 재정의 해줌. 
+      this.setCreatedCarouselCompStyle();
+    }
     this.init(target);
   }
   
