@@ -20,7 +20,10 @@
     this.options = {
 
     }
-
+    /**
+     * @func init
+     * @description 캐러셀 초기화시키는 함수.
+     */
     this.init = function(target) {
       var target_obj = null;
 
@@ -50,7 +53,11 @@
       this.setCarouselInfo();
       this.bind();
     }
-    
+
+    /**
+     * @func createCarouselComp
+     * @description 캐러셀에 필요한 component를 생성해주고 추가해주는 함수.
+     */
     this.createCarouselComp = function() {
 
       /*
@@ -104,6 +111,10 @@
       this.carousel = carousel_wrapper;
     }
 
+    /**
+     * @func setCreatedCarouselCompStyle
+     * @description 캐러셀 컴포넌트의 스타일을 설정해주는 함수.
+     */
     this.setCreatedCarouselCompStyle = function() {
       
       // 1. ul을 부모의 넓이 * li크기만큼 변경
@@ -124,6 +135,10 @@
           
     }
 
+    /**
+     * @func setCarouselInfo
+     * @description 캐러셀에 필요한 정보들을 설정해주는 함수.
+     */
     this.setCarouselInfo = function() {
 
       var carousel = this.carousel;
@@ -134,9 +149,18 @@
       this.setMoveDistance();
 
     }
+    /**
+     * @func setMoveDistance
+     * @description 캐러셀이 움직일 거리를 설정해주는 함수.
+     */
     this.setMoveDistance = function() {
       this.move_distance = parseInt(global.getComputedStyle(this.carousel).width); 
     }
+
+    /**
+     * @func bind
+     * @description 이벤트 바인딩을 모아준 함수.
+     */
     // Event binding
     this.bind = function() {
 
@@ -152,6 +176,10 @@
       next_btn.addEventListener('click', this.moveUlElement.bind(this, 'next'));
     }
 
+    /**
+     * @func resizeBrowser
+     * @description resize 이벤트가 작동할 때 실행할 함수들의 모음.
+     */
     this.resizeBrowser = function() {
       // 1. 브라우저가 resize될 때마다 carousel의 스타일을 재정의 해줌. 
       this.setCreatedCarouselCompStyle();
@@ -160,6 +188,11 @@
       // 3. 브라우저가 resize될 때마다 ul의 left를 재정의 해줌
       this.moveFn(this.move_distance * this.current_page);
     }
+
+    /**
+     * @func moveUlElement
+     * @description ul을 움직여주는 함수.
+     */
     this.moveUlElement = function(direction) {
       var max_page = this.max_page,
           current_page = this.current_page,
@@ -184,12 +217,15 @@
       this.current_distance = current_distance;
       
     }
+    /**
+     * @func moveFn
+     * @description 실질적으로 ul을 움직이는 함수.
+     */
     this.moveFn = function(current_distance) {
       var ul = this.carousel.querySelector('ul');
 
       ul.style.left = -(current_distance) + 'px';
     }
-
 
 
     this.init(target);
@@ -201,18 +237,34 @@
 
   // utils
   // validation
+  /**
+   * @func isIdSelector
+   * @description selector가 id selector인지 확인하는 함수.
+   */
   var isIdSelector = function(selector) {
     return /^#/g.test(selector);
   }
+  /**
+   * @func typeValidation
+   * @description target의 type을 확인하는 함수.
+   */
   var typeValidation = function(target, type) {
     type = type.toLowerCase();
 
     return (typeof target === type);
   }
+  /**
+   * @func isElementNode
+   * @description ElementNode인지 확인하는 함수.
+   */
   var isElementNode = function(target) {
     if( !typeValidation(target, 'object') ) { throw 'object가 아닙니다.' }
     return target.nodeType === 1; 
   }
+  /**
+   * @func isTagName
+   * @description 어떤 태그인지 확인하는 함수.
+   */
   var isTagName = function(target, name) {
 
     name = name.toLowerCase();

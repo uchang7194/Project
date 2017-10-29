@@ -11,16 +11,25 @@
 <body>
   
   <div>
-    <ul id="carousel" class="test">
+    <ul id="carousel1" class="test">
       <li><img src="./images/1.jpg" alt="test"/></li>
       <li><img src="./images/2.jpg" alt="test"/></li>
       <li><img src="./images/3.jpg" alt="test"/></li>
       <li><img src="./images/4.jpg" alt="test"/></li>
     </ul>
   </div>
+  <div>
+    <ul id="carousel2" class="test">
+      <li><img src="./images/1.jpg" alt="test"/></li>
+      <li><img src="./images/3.jpg" alt="test"/></li>
+      <li><img src="./images/4.jpg" alt="test"/></li>
+      <li><img src="./images/2.jpg" alt="test"/></li>
+    </ul>
+  </div>
 
   <script>
-    new Carousel(document.querySelector('#carousel'));
+    new Carousel(document.querySelector('#carousel1'));
+    new Carousel('#carousel2');
   </script>
 </body>
 </html>
