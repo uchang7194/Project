@@ -46,9 +46,7 @@
         throw 'ul태그가 아닙니다.';
       }
 
-      console.log('old carousel: ', this.carousel);
       this.createCarouselComp();
-      console.log('new carousel: ', this.carousel);
       this.setCreatedCarouselCompStyle();
       this.setCarouselInfo();
       this.bind();
@@ -166,7 +164,8 @@
 
       var carousel = this.carousel,
           prev_btn = carousel.querySelector('.move-btn.prev'),
-          next_btn = carousel.querySelector('.move-btn.next');
+          next_btn = carousel.querySelector('.move-btn.next'),
+          controllers = carousel.querySelectorAll('.controller');  
 
       // 1. resize 
       window.addEventListener('resize', this.resizeBrowser.bind(this));
@@ -174,6 +173,11 @@
       // 2. prev, next click Event
       prev_btn.addEventListener('click', this.moveUlElement.bind(this, 'prev'));
       next_btn.addEventListener('click', this.moveUlElement.bind(this, 'next'));
+
+      // 3. controller click Event
+      for(var i = 0, len = controllers.length; i < len; i++) {
+        controllers[i].addEventListener('click', this.controllerFn.bind(this, i));
+      }
     }
 
     /**
@@ -188,7 +192,14 @@
       // 3. 브라우저가 resize될 때마다 ul의 left를 재정의 해줌
       this.moveFn(this.move_distance * this.current_page);
     }
-
+    /**
+     * @func controllerFn
+     * @description controller click event
+     */
+    this.controllerFn = function(index) {
+      console.log(index);
+      this.moveFn(this.move_distance * index);
+    }
     /**
      * @func moveUlElement
      * @description ul을 움직여주는 함수.
