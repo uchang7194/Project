@@ -17,6 +17,7 @@
       <li><img src="./images/2.jpg" alt="test"/></li>
       <li><img src="./images/3.jpg" alt="test"/></li>
       <li><img src="./images/4.jpg" alt="test"/></li>
+      <li><img src="./images/2.jpg" alt="test"/></li>
     </ul>
   </div>
   <div>
@@ -25,12 +26,22 @@
       <li><img src="./images/3.jpg" alt="test"/></li>
       <li><img src="./images/4.jpg" alt="test"/></li>
       <li><img src="./images/2.jpg" alt="test"/></li>
+      <li><img src="./images/3.jpg" alt="test"/></li>
+    </ul>
+  </div>
+  <div>
+    <ul id="carousel3" class="test">
+      <li><img src="./images/1.jpg" alt="test"/></li>
+      <li><img src="./images/3.jpg" alt="test"/></li>
+      <li><img src="./images/4.jpg" alt="test"/></li>
+      <li><img src="./images/2.jpg" alt="test"/></li>
     </ul>
   </div>
 
   <script>
-    new Carousel(document.querySelector('#carousel1'));
-    new Carousel('#carousel2');
+    var carousel1 = new Carousel(document.querySelector('#carousel1'), { view: 3, controller: false, hover_effect: true });
+    var caoursel2 = new Carousel(document.querySelector('#carousel2'));
+    var caoursel3 = new Carousel('#carousel3');
   </script>
 </body>
 </html>

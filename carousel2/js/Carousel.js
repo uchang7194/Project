@@ -11,241 +11,291 @@
     return;
   }
 
-  function Carousel(target) {
+  function Carousel(target, new_options) {
     // - selector(string type), DOM객체 추가 
     // - carousel 형태 만들기
     // - 움직이는 기능 추가
     // - options 추가
 
-    this.carousel = null;
-    this.max_page = 0;
-    this.current_page = 0;
-    this.move_distance = 0;
-    this.current_distance = 0;
-    this.options = {
+    var carousel = null;
+    var max_page = 0;
+    var current_page = 0;
+    var move_distance = 0;
+    var current_distance = 0;
+    var options = {
+      // 캐러샐 분할 하기 
+      view: 1,
+      // controller 제거
+      controller: true,
+      // item hover할 때 튀어나오는 느낌주기
+      hover_effect: false,
 
     }
-    /**
-     * @func init
-     * @description 캐러셀 초기화시키는 함수.
-     */
-    this.init = function(target) {
-      var target_obj = null;
+    return (function (target, new_options) {
+      /**
+       * @func init
+       * @description 캐러셀 초기화시키는 함수.
+       */
+      
+      var init = function(target, new_options) {
 
-      if( U.typeValidation(target, 'string') ) {
-        // 1. selector 중 id만 받을 수 있도록 #이 맨 앞에 있는지 .이 있고 둘 다 없는지 확인
-        if( U.isIdSelector(target) ) {
-          target_obj = document.querySelector(target);
+        var target_obj = null;
+
+
+        new_options = new_options || options; 
+
+        U.extendOptions(options, new_options);
+        
+        if( U.typeValidation(target, 'string') ) {
+          // 1. selector 중 id만 받을 수 있도록 #이 맨 앞에 있는지 .이 있고 둘 다 없는지 확인
+          if( U.isIdSelector(target) ) {
+            target_obj = document.querySelector(target);
+          } else {
+            throw 'id값을 가진 셀렉터만 사용할 수 있습니다.';
+          }
+  
+        } else if( U.isElementNode(target) ) {
+          // 1.target이 UL인지 확인해야함.
+          target_obj = target;
+        } 
+        if( U.isTagName(target_obj, 'ul') ) {
+          carousel = target_obj;
         } else {
-          throw 'id값을 가진 셀렉터만 사용할 수 있습니다.';
+          throw 'ul태그가 아닙니다.';
+        }
+  
+        createCarouselComp();
+        setCreatedCarouselCompStyle();
+        setCarouselInfo();
+        bind();
+      }
+  
+      /**
+       * @func createCarouselComp
+       * @description 캐러셀에 필요한 component를 생성해주고 추가해주는 함수.
+       */
+      var createCarouselComp = function() {
+  
+        /*
+          Carousel_wrapper 
+            - ul
+              - li
+            - Controller_wrapper
+              - controller * li_count
+            - move-btn.prev_btn
+            - move-btn.next_btn
+        */
+
+        // options
+        var use_controller = options.controller;
+        var view = options.view;
+        var hover_effect = options.hover_effect;
+        // target Element
+        var ul = carousel.cloneNode(true),
+            li = ul.querySelectorAll('li'),
+            parent = carousel.parentNode;
+  
+        // createElement & setAttribute
+        var carousel_wrapper = document.createElement('div'),
+            prev_btn = document.createElement('button'),
+            next_btn = document.createElement('button');
+        
+        carousel_wrapper.setAttribute('class', 'carousel-wrapper');
+        prev_btn.setAttribute('type', 'button');
+        prev_btn.setAttribute('class', 'move-btn prev');
+        next_btn.setAttribute('type', 'button');
+        next_btn.setAttribute('class', 'move-btn next');
+        
+
+        console.log('use_controller: ', use_controller);
+        if( use_controller ) {
+
+          console.log('create controller!');
+          var controller_wrapper = document.createElement('div');
+          controller_wrapper.setAttribute('class', 'controller-wrapper');
+  
+          for(var i = 0, len = (li.length - (view - 1)); i < len; i++) {
+            var controller = document.createElement('button');
+    
+            controller.setAttribute('class', 'controller');
+            controller.setAttribute('data-index', i);
+    
+            controller_wrapper.appendChild(controller);
+          }
+          
+          
         }
 
-      } else if( U.isElementNode(target) ) {
-        // 1.target이 UL인지 확인해야함.
-        target_obj = target;
-      } 
+        for(var i = 0, len = li.length; i < len; i++) {
+          var img = li[i].childNodes;
+          var img_clone = img[0].cloneNode(true);
+          var carousel_img_wrapper = document.createElement('div');
 
-      if( U.isTagName(target_obj, 'ul') ) {
-        this.carousel = target_obj;
-      } else {
-        throw 'ul태그가 아닙니다.';
+          if( hover_effect ) {
+            carousel_img_wrapper.setAttribute('class', 'carousel-img-wrapper hover-effect');
+          } else {
+            carousel_img_wrapper.setAttribute('class', 'carousel-img-wrapper');
+          }
+          carousel_img_wrapper.appendChild(img_clone);
+
+          li[i].replaceChild(carousel_img_wrapper, img[0]);
+        }
+
+        // combine Element
+        
+        carousel_wrapper.appendChild(ul);
+        use_controller && carousel_wrapper.appendChild(controller_wrapper);
+        carousel_wrapper.appendChild(prev_btn);
+        carousel_wrapper.appendChild(next_btn);
+  
+        // replace Element
+        parent.replaceChild(carousel_wrapper, carousel);
+  
+        // this.carousel redefinition
+        carousel = carousel_wrapper;
       }
+  
+      /**
+       * @func setCreatedCarouselCompStyle
+       * @description 캐러셀 컴포넌트의 스타일을 설정해주는 함수.
+       */
+      var setCreatedCarouselCompStyle = function() {
+        
+        // 1. ul을 부모의 넓이 * li크기만큼 변경
+        // 2. li크기를 부모크기만큼 변경
+        var view = options.view;
 
-      this.createCarouselComp();
-      this.setCreatedCarouselCompStyle();
-      this.setCarouselInfo();
-      this.bind();
-    }
-
-    /**
-     * @func createCarouselComp
-     * @description 캐러셀에 필요한 component를 생성해주고 추가해주는 함수.
-     */
-    this.createCarouselComp = function() {
-
-      /*
-        Carousel_wrapper 
-          - ul
-            - li
-          - Controller_wrapper
-            - controller * li_count
-          - move-btn.prev_btn
-          - move-btn.next_btn
-      */
-
-      // target Element
-      var ul = this.carousel.cloneNode(true),
-          li = ul.querySelectorAll('li'),
-          parent = this.carousel.parentNode;
-
-      // createElement & setAttribute
-      var carousel_wrapper = document.createElement('div'),
-          controller_wrapper = document.createElement('div'),
-          prev_btn = document.createElement('button'),
-          next_btn = document.createElement('button');
-
-      carousel_wrapper.setAttribute('class', 'carousel-wrapper');
-      controller_wrapper.setAttribute('class', 'controller-wrapper');
-      prev_btn.setAttribute('type', 'button');
-      prev_btn.setAttribute('class', 'move-btn prev');
-      next_btn.setAttribute('type', 'button');
-      next_btn.setAttribute('class', 'move-btn next');
-
-      for(var i = 0, len = li.length; i < len; i++) {
-        var controller = document.createElement('button');
-
-        controller.setAttribute('class', 'controller');
-        controller.setAttribute('data-index', i);
-
-        controller_wrapper.appendChild(controller);
+        var parent = carousel.parentNode,
+            ul = parent.querySelector('ul'),
+            li = parent.querySelectorAll('li');
+  
+        var parent_width = parseInt(window.getComputedStyle(parent).width);
+  
+        // 1.
+        ul.style.width = (parent_width * li.length) / view + 'px';
+        // 2.
+        for(var i = 0, len = li.length; i < len; i++) {
+          li[i].style.width = parent_width / view + 'px';
+        }
+            
       }
+  
+      /**
+       * @func setCarouselInfo
+       * @description 캐러셀에 필요한 정보들을 설정해주는 함수.
+       */
+      var setCarouselInfo = function() {
+  
+        // var carousel = carousel;
+        
+        // console.log(carousel);
+        // 1. carousel li가 몇개인지
+        var li_count = carousel.querySelectorAll('li').length;
+        var view = options.view;
 
-      // combine Element
-      
-      carousel_wrapper.appendChild(ul);
-      carousel_wrapper.appendChild(controller_wrapper);
-      carousel_wrapper.appendChild(prev_btn);
-      carousel_wrapper.appendChild(next_btn);
-
-      // replace Element
-      parent.replaceChild(carousel_wrapper, this.carousel);
-
-      // this.carousel redefinition
-      this.carousel = carousel_wrapper;
-    }
-
-    /**
-     * @func setCreatedCarouselCompStyle
-     * @description 캐러셀 컴포넌트의 스타일을 설정해주는 함수.
-     */
-    this.setCreatedCarouselCompStyle = function() {
-      
-      // 1. ul을 부모의 넓이 * li크기만큼 변경
-      // 2. li크기를 부모크기만큼 변경
-
-      var parent = this.carousel.parentNode,
-          ul = parent.querySelector('ul'),
-          li = parent.querySelectorAll('li');
-
-      var parent_width = parseInt(window.getComputedStyle(parent).width);
-
-      // 1.
-      ul.style.width = (parent_width * li.length) + 'px';
-      // 2.
-      for(var i = 0, len = li.length; i < len; i++) {
-        li[i].style.width = parent_width + 'px';
+        
+        max_page = li_count - (view - 1);
+        console.log('max_page: ', max_page);
+        // 2. parent_width
+        setMoveDistance();
+  
       }
+      /**
+       * @func setMoveDistance
+       * @description 캐러셀이 움직일 거리를 설정해주는 함수.
+       */
+      var setMoveDistance = function() {
+        var view = options.view;
+        move_distance = parseInt(global.getComputedStyle(carousel).width) / view; 
+      }
+  
+      /**
+       * @func bind
+       * @description 이벤트 바인딩을 모아준 함수.
+       */
+      // Event binding
+      var bind = function() {
+  
+        var prev_btn = carousel.querySelector('.move-btn.prev'),
+            next_btn = carousel.querySelector('.move-btn.next'),
+            controllers = carousel.querySelectorAll('.controller');  
+  
+        // 1. resize 
+        window.addEventListener('resize', resizeBrowser.bind(this));
+  
+        // 2. prev, next click Event
+        prev_btn.addEventListener('click', moveUlElement.bind(this, 'prev'));
+        next_btn.addEventListener('click', moveUlElement.bind(this, 'next'));
+  
+        // 3. controller click Event
+        for(var i = 0, len = controllers.length; i < len; i++) {
+          controllers[i].addEventListener('click', controllerFn.bind(this, i));
+        }
+      }
+  
+      /**
+       * @func resizeBrowser
+       * @description resize 이벤트가 작동할 때 실행할 함수들의 모음.
+       */
+      var resizeBrowser = function() {
+        // 1. 브라우저가 resize될 때마다 carousel의 스타일을 재정의 해줌. 
+        setCreatedCarouselCompStyle();
+        // 2. 브라우저가 resize될 때마다 carousel-wrapper의 width값을 재정의 해줌.
+        setMoveDistance();
+        // 3. 브라우저가 resize될 때마다 ul의 left를 재정의 해줌
+        moveFn(move_distance * current_page);
+      }
+      /**
+       * @func controllerFn
+       * @description controller click event
+       */
+      var controllerFn = function(index) {
+        current_page = index;
+        moveFn(move_distance * index);
+      }
+      /**
+       * @func moveUlElement
+       * @description ul을 움직여주는 함수.
+       */
+      var moveUlElement = function(direction) {
+        var _max_page = max_page,
+            _current_page = current_page,
+            _current_distance = current_distance;
+  
+        if( direction === 'next' ) {
+  
+          (_current_page >= (_max_page - 1)) ? _current_page = 0 : _current_page+=1;
+  
           
-    }
-
-    /**
-     * @func setCarouselInfo
-     * @description 캐러셀에 필요한 정보들을 설정해주는 함수.
-     */
-    this.setCarouselInfo = function() {
-
-      var carousel = this.carousel;
-
-      // 1. carousel li가 몇개인지
-      this.max_page = carousel.querySelectorAll('li').length;
-      // 2. parent_width
-      this.setMoveDistance();
-
-    }
-    /**
-     * @func setMoveDistance
-     * @description 캐러셀이 움직일 거리를 설정해주는 함수.
-     */
-    this.setMoveDistance = function() {
-      this.move_distance = parseInt(global.getComputedStyle(this.carousel).width); 
-    }
-
-    /**
-     * @func bind
-     * @description 이벤트 바인딩을 모아준 함수.
-     */
-    // Event binding
-    this.bind = function() {
-
-      var carousel = this.carousel,
-          prev_btn = carousel.querySelector('.move-btn.prev'),
-          next_btn = carousel.querySelector('.move-btn.next'),
-          controllers = carousel.querySelectorAll('.controller');  
-
-      // 1. resize 
-      window.addEventListener('resize', this.resizeBrowser.bind(this));
-
-      // 2. prev, next click Event
-      prev_btn.addEventListener('click', this.moveUlElement.bind(this, 'prev'));
-      next_btn.addEventListener('click', this.moveUlElement.bind(this, 'next'));
-
-      // 3. controller click Event
-      for(var i = 0, len = controllers.length; i < len; i++) {
-        controllers[i].addEventListener('click', this.controllerFn.bind(this, i));
-      }
-    }
-
-    /**
-     * @func resizeBrowser
-     * @description resize 이벤트가 작동할 때 실행할 함수들의 모음.
-     */
-    this.resizeBrowser = function() {
-      // 1. 브라우저가 resize될 때마다 carousel의 스타일을 재정의 해줌. 
-      this.setCreatedCarouselCompStyle();
-      // 2. 브라우저가 resize될 때마다 carousel-wrapper의 width값을 재정의 해줌.
-      this.setMoveDistance();
-      // 3. 브라우저가 resize될 때마다 ul의 left를 재정의 해줌
-      this.moveFn(this.move_distance * this.current_page);
-    }
-    /**
-     * @func controllerFn
-     * @description controller click event
-     */
-    this.controllerFn = function(index) {
-      console.log(index);
-      this.current_page = index;
-      this.moveFn(this.move_distance * index);
-    }
-    /**
-     * @func moveUlElement
-     * @description ul을 움직여주는 함수.
-     */
-    this.moveUlElement = function(direction) {
-      var max_page = this.max_page,
-          current_page = this.current_page,
-          current_distance = this.current_distance;
-
-      if( direction === 'next' ) {
-
-        (current_page >= (max_page - 1)) ? current_page = 0 : current_page+=1;
-
+        } else if( direction === 'prev' ) {
+          
+          (_current_page <= 0 ) ? _current_page = (_max_page - 1): _current_page-=1;
+  
+        }
+  
+        _current_distance = move_distance * _current_page;
         
-      } else if( direction === 'prev' ) {
+        moveFn(_current_distance);
+  
+        current_page = _current_page;
+        current_distance = _current_distance;
         
-        (current_page <= 0 ) ? current_page = (max_page - 1): current_page-=1;
-
       }
+      /**
+       * @func moveFn
+       * @description 실질적으로 ul을 움직이는 함수.
+       */
+      var moveFn = function(_current_distance) {
+        var ul = $(carousel).find('ul');
+  
+        ul.stop(true, true).animate({ left: -(_current_distance) + 'px' }, 300);
+      }
+  
+  
+      init(target, new_options);
 
-      current_distance = this.move_distance * current_page;
-      
-      this.moveFn(current_distance);
+    }(target, new_options));
 
-      this.current_page = current_page;
-      this.current_distance = current_distance;
-      
-    }
-    /**
-     * @func moveFn
-     * @description 실질적으로 ul을 움직이는 함수.
-     */
-    this.moveFn = function(current_distance) {
-      var ul = $(this.carousel).find('ul');
-
-      ul.stop(true, true).animate({ left: -(current_distance) + 'px' }, 300);
-    }
-
-
-    this.init(target);
   }
   
   global.Carousel = Carousel;
@@ -287,11 +337,61 @@
     name = name.toLowerCase();
     return target.nodeName.toLowerCase() === name;  
   }
+  /**
+   * @func extendOptions
+   * @description 객체를 합쳐주는 함수.
+   * @param current_options 기존 Carousel이 가지고 있는 option 객체
+   * @param enw_options 생성자 instance가 생성될 때 받은 option 객체 정보
+   */
+  var extendOptions = function(current_options, new_options) {
+
+    validationOptions(current_options, new_options);
+
+    for(var prop in new_options) {
+      if( new_options.hasOwnProperty(prop) ) {
+        current_options[prop] = new_options[prop];
+      }
+    }
+
+    return current_options;
+  }
+  /**
+   * @func validationOptions
+   * @description 새로운 객체의 key가 유효한 key값인지 확인.
+   */ 
+
+  var validationOptions = function(current_options, new_options) {
+    
+    for(var prop in new_options) {
+      if( new_options.hasOwnProperty(prop) ) {
+        if( current_options[prop] === undefined ) {
+          throw  prop + '은 유효하지 않은 option입니다.';
+        }
+      }
+    }
+  }
+
+  /**
+   * @func compareOptions
+   * @description 새로운 객체를 받아 기존 options에 값을 재할당시켜주는 함수.
+   */ 
+  var compareOptions = function(current_options, new_options) {
+    // 1. 유효한 options인지 확인
+    //  - 유효하지 않은 옵션이면 throw 
+    //  - 유효한 옵션이면 비교시작
+    // 2. 비교방법
+    //  - JSON.stringify를 사용해서 문자열 비교하는 방법
+    //  - 객체를 travelsing해서 값이 있는지 비교하는 방법.
+
+    
+  }
   return {
     // validation
     isIdSelector: isIdSelector,
     typeValidation: typeValidation,
     isElementNode: isElementNode,
-    isTagName: isTagName
+    isTagName: isTagName,
+    // options
+    extendOptions: extendOptions
   }
 }() ) );
