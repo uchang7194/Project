@@ -29,7 +29,11 @@
       controller: true,
       // item hover할 때 튀어나오는 느낌주기
       hover_effect: false,
-
+      // 이미지 비율
+      aspect: {
+        x: 4,
+        y: 3
+      } 
     }
     return (function (target, new_options) {
       /**
@@ -175,11 +179,66 @@
         ul.style.width = (parent_width * li.length) / view + 'px';
         // 2.
         for(var i = 0, len = li.length; i < len; i++) {
-          li[i].style.width = parent_width / view + 'px';
+          var wrapper_width =  parent_width / view;
+          var img_wrapper = li[i].children[0];
+
+          li[i].style.width = wrapper_width + 'px';
+          setImageWrapperAspect(img_wrapper, wrapper_width);
         }
             
       }
-  
+      /**
+       * @func setImageWrapperAspect
+       * @description 이미지 wrapper의 비율을 맞춰주는 함수.
+       */
+      var setImageWrapperAspect = function(img_wrapper, img_wrapper_width) {
+        // 1. options의 apsect로 img_wrapper의 높이, 이미지의 비율을 구한다.
+        var aspect_x = options.aspect.x,
+            aspect_y = options.aspect.y,
+            img_wrapper_height = img_wrapper_width / aspect_x * aspect_y,
+            img_wrapper_aspect = img_wrapper_height / img_wrapper_width;
+        console.log(img_wrapper);
+        console.log('img_wrapper_width: ', img_wrapper_width);
+        console.log('img_wrapper_height: ', img_wrapper_height);
+        img_wrapper.style.height = img_wrapper_height + 'px';
+
+        setImageAspect(img_wrapper, img_wrapper_height, img_wrapper_aspect);
+      }
+      /**
+       * @func setImageAspect
+       * @description 이미지의 비율을 맞춰주는 함수.
+       */
+      var setImageAspect = function(img_wrapper, img_wrapper_height, img_wrapper_aspect) {
+        var img = img_wrapper.querySelector('img'),
+            img_aspect = img.height / img.width,
+            style = {};
+
+            console.log('img: ', img);
+            console.log('img_aspect: ', img_aspect);
+            console.log('img_wrapper_aspect: ', img_wrapper_aspect);
+        if( img_aspect <= img_wrapper_aspect ) {
+          var actual_img_width = img_wrapper_height / img_aspect,
+              toBe_img_width = img_wrapper_height / img_wrapper_aspect,
+              margin_left = -Math.round((actual_img_width - toBe_img_width) / 2);
+
+          console.log('margin_left: ', margin_left);
+          style.width = 'auto';
+          style.height = '100%';
+          style.marginLeft = margin_left + 'px';
+
+        } else {
+
+          style.width = '100%';
+          style.height = 'auto';
+          style.marginLeft = 0;
+        }
+        
+        // U.extendOptions(img.style, style);
+        img.style.width = style.width;
+        img.style.height = style.height;
+        img.style.marginLeft = style.marginLeft;
+      }
+
       /**
        * @func setCarouselInfo
        * @description 캐러셀에 필요한 정보들을 설정해주는 함수.

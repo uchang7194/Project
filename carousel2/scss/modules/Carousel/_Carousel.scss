@@ -72,28 +72,28 @@
       list-style: none;
     }
     .carousel-img-wrapper {
-      position: relative;
-      min-height: 300px;
-      max-width: 95%;
-      margin: 0 auto;
+      // position: relative;
+      width: 100%;
+      overflow: hidden;
+      // margin: 0 auto;
       &.hover-effect {
         &:hover {
           img {
-            transform: translate(-50%, -50%) scale(1.07);  
+            // transform: translate(-50%, -50%) scale(1.07);  
           }
         }
       }
     }
     img {
-      display: block;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 95%;
-      transform: translate(-50%, -50%);
-      transform-origin: center center;
-      // transform: translateY(-50%);
-      transition: all 0.5s;
+      // display: block;
+      // position: absolute;
+      // top: 50%;
+      // left: 50%;
+      // width: 95%;
+      // transform: translate(-50%, -50%);
+      // transform-origin: center center;
+      // // transform: translateY(-50%);
+      // transition: all 0.5s;
     }
   }
 }
