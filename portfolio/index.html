@@ -20,10 +20,18 @@
     <section class="main">
       <h2 class="a11y-hidden">메인 영역입니다.</h2>
     </section>
+    <section class="portfolio">
+      <h2 class="a11y-hidden">포트폴리오 영역입니다.</h2>
+    </section>
   </div>
 
   <script>
-    var main_wave = new Wave('.main', { wave_speed: 5000});
+    // (function(global){
+    //   'use strict';
+      var main = new Wave('.main', { wave_speed: 5000});
+      var portfolio = new Wave('.portfolio', { wave_speed: 5000});
+    
+    // }(window));
   </script>
 </body>
 </html>

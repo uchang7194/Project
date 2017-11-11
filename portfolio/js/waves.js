@@ -5,31 +5,28 @@
     throw 'Already Wave object is exist'
   }
 
-  global.Wave = function() {
+  function Wave(target, new_options) {
 
-    var target_obj = null,
-        wave_box = null,
-        waves = [];
+    this.settings = function(){
+      var target_obj = null,
+          wave_box = null,
+          waves = [];      
 
-    var options = {
-      wave_box_color: '#feb47b',
-      wave_speed: 3000,
-      wave_pulse: 1500,
-      wave_colors: [
-        '#dce35b',
-        '#45b649',
-      ]
-    }
-
-    var resizeTimeout = null;
-
-    return function(target, new_options){
-      
+      var options = {
+        wave_box_color: '#feb47b',
+        wave_speed: 3000,
+        wave_pulse: 1500,
+        wave_colors: [
+          '#dce35b',
+          '#45b649',
+        ]
+      }
+      var resizeTimeout = null;
       /**
        * @method init
        * @description Wave 생성자를 초기화시키는 함수.
        */ 
-      function init() {
+      var init = function(target, new_options) {
         if( U.typeValidation(target, 'string') ) {
           target_obj = document.querySelector(target);     
         } 
@@ -41,9 +38,12 @@
         if( U.typeValidation(new_options, 'undefined') ) {
           options = options || new_options;
         } else {
+          console.log(options);
           U.extendsOption(options, new_options);
         }
 
+        console.log('target: ', target);
+        console.log('target_obj: ', target_obj);
         createWaveElement();
         setWaveStyle();
         bind();
@@ -156,7 +156,7 @@
       function setWaveSize() {
 
         var wave_box_style = U.getComputedStyle(wave_box);
-
+            console.log('setWavesize: ', wave_box);
         var wave_box_width = parseInt(wave_box_style.width, 10),
             wave_box_height = parseInt(wave_box_style.height, 10),
             wave_box_size = 0;
@@ -175,10 +175,16 @@
             marginLeft: -(wave_box_size / 2)  + 'px'
           }
           U.extendsOption(_wave.style, new_wave_style);
-        }
+        } 
       }
-      init();
-    };
-  }();
-  
+
+      return {
+        init: init
+      }
+    }();
+
+    this.settings.init(target, new_options);
+  };
+
+  global.Wave = Wave;
 }(window, window.Utils));

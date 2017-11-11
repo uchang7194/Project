@@ -44,8 +44,6 @@
       for( prop in new_options ) {
 
         if( old_options.hasOwnProperty(prop) ) {
-          console.log('prop: ', prop);
-          console.log('prop: ', new_options[prop]);
           old_options[prop] = new_options[prop];
         }
       }
