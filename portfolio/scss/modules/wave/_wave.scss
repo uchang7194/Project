@@ -1,0 +1,39 @@
+// 참고 자료
+// https://codepen.io/rstacruz/pen/oxJqNv
+
+.wave-box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  transform: translate3d(0, 0, 0);
+  z-index: -1;
+
+  .wave {
+    opacity: .4;
+    position: absolute;
+    bottom: 100px;
+    left: 50%;
+    transform-origin: 50% 48%;
+    border-radius: 43%;
+    animation: drift 3000ms infinite linear;
+  }
+}
+
+// .wave-box:after {
+//   content: '';
+//   display: block;
+//   left: 0;
+//   top: 0;
+//   width: 100%;
+//   height: 100%;
+//   z-index: 11;
+//   transform: translate3d(0, 0, 0);
+// }
+
+@keyframes drift {
+  from { transform: rotate(0deg); }
+  from { transform: rotate(360deg); }
+}

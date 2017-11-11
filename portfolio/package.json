@@ -1,0 +1,11 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "watch": "node-sass -w scss/ -o css/ --output-style compressed --source-map true"
+  },
+  "author": "",
+  "license": "ISC"
+}
