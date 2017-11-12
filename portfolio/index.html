@@ -7,6 +7,7 @@
   <meta name="author" content="Uchang Heo">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=Spectral+SC" rel="stylesheet">
   <link rel="stylesheet" href="./css/stylesheets.css">
   <script src="./js/utils/utils.js"></script>
   <script src="./js/waves.js"></script>
@@ -19,6 +20,31 @@
   <div class="wrapper">
     <section class="main">
       <h2 class="a11y-hidden">메인 영역입니다.</h2>
+      <div class="main-title">
+        <h3>
+          Uchang's <br>
+          <span>portfolio</span>
+        </h3>
+      </div>
+      <nav class="portfolio-list">
+        <ul>
+          <li>
+            <a class="intro" href="#">
+              Intro
+            </a>
+          </li>
+          <li>
+            <a class="pf" href="#">
+              portfolio
+            </a>
+          </li>
+          <li>
+            <a class="contact" href="#">
+              contact
+            </a>
+          </li>
+        </ul>
+      </nav>
     </section>
     <section class="portfolio">
       <h2 class="a11y-hidden">포트폴리오 영역입니다.</h2>
@@ -28,9 +54,11 @@
   <script>
     // (function(global){
     //   'use strict';
-      var main = new Wave('.main', { wave_speed: 5000});
-      var portfolio = new Wave('.portfolio', { wave_speed: 5000});
-    
+      // var main = new Wave('.main', { wave_speed: 5000});
+      // var portfolio = new Wave('.portfolio', { wave_speed: 5000});
+    new Wave('.portfolio-list .intro', { wave_speed: 5000, wave_box_color: '##f7f7f7', wave_colors: ['#4facfe', '#00f2fe'] });
+    new Wave('.portfolio-list .pf', { wave_speed: 8000, wave_box_color: '##f7f7f7', wave_colors: ['#fccb90', '#d57eeb'] });
+    new Wave('.portfolio-list .contact', { wave_speed: 6500, wave_box_color: '##f7f7f7' });
     // }(window));
   </script>
 </body>

@@ -1,0 +1,60 @@
+/// title vender
+/// @author  Uchang
+/// @content vender prefix mixin
+@mixin vender($style, $value) {
+  -webkit-#{$style}: $value;
+  -moz-#{$style}: $value;
+  -ms-#{$style}: $value;
+  -o-#{$style}: $value;
+}
+@mixin clearfix {
+  &:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+}
+// responsive 
+/// title mobile
+/// @author  Uchang
+/// @content mobile media 쿼리 mixin  
+@mixin mobile {
+  @media screen and (max-width: $mobile-size){
+    @content;
+  }
+}
+/// title tablet
+/// @author  Uchang
+/// @content tablet media 쿼리 mixin
+@mixin tablet {
+  @media screen and (min-width: #{$mobile-size + 1}) and (max-width: $tablet-size) {
+    @content;
+  }
+}
+/// title desktop
+/// @author  Uchang
+/// @content desktop media 쿼리 mixin
+@mixin desktop {
+  @media screen and (min-width: #{$tablet-size + 1}) {
+    @content;
+  } 
+}
+/// title breakpoint
+/// @author  Uchang
+/// @content media 쿼리 breakpoint mixin
+@mixin breakpoint($min: 0, $max: 0) {
+
+  @if ($min == 0) {
+    @media screen and (max-width: $max) {
+      @content;
+    }
+  } @else if ($max == 0) {
+    @media screen and (min-width: $min) {
+      @content;
+    }
+  } @else {
+    @media screen and (min-width: $min) and (max-width: $max) {
+      @content;
+    }
+  }
+}

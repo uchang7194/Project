@@ -1,4 +1,138 @@
 .main {
   position: relative;
   height: 100vh;
+  font-family: 'Spectral SC', serif;
+}
+
+.main-title {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  width: 100%;
+  text-align: center;
+  transform: translateX(-50%);
+  h3 {
+    font-weight: bolder;
+    // line-height: 0.8;
+    letter-spacing: -0.025em;
+    color: $default-font-color;
+    text-shadow: 2px 2px #d5d5d5;
+  }
+  span {
+    font-size: 3.5rem;
+    letter-spacing: 0.08em;
+  }
+}
+.portfolio-list {
+  position: absolute;
+  bottom: 45%;
+  transform: translate(-50%, 50%);
+  left: 50%;
+  width: 100%;
+  text-align: center;
+  li {
+    a {
+      position: relative;
+      display: block;
+      overflow: hidden;
+      padding: 10px 15px;
+      color: $default-font-color;
+      text-decoration: none;
+      text-transform: capitalize;
+      text-align: center;
+      text-shadow: 1px 1px rgba(255, 255, 255, 0.4);
+      border-radius: 10px;
+      box-shadow: 2px 2px 5px 3px #ddd;
+      .wave {
+        bottom: 0;
+      }
+    }
+  }
+}
+
+@include mobile {
+  .main-title {
+    h3 {
+      font-size: 1.8rem;
+    }
+    span {
+      font-size: 3rem;
+    }
+  }
+  .portfolio-list {
+    
+    li {
+      margin-bottom: 20px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+      a {
+        font-size: 1.6rem;
+      }
+    }
+  }
+}
+@include tablet {
+  .main-title {
+    h3 {
+      font-size: 2rem;
+    }
+    span {
+      font-size: 4rem;
+    }
+  }
+  .portfolio-list {
+    // transform: translateX(-50%);
+    li {
+      display: inline-block;
+      margin-right: 20px;
+      &:last-child {
+        margin-right: 0;
+      }
+      a {
+        font-size: 1.75rem;
+      }
+    }
+  }
+}
+@include desktop {
+  .main-title {
+    h3 {
+      font-size: 2.15rem;
+    }
+    span {
+      font-size: 4.3rem;
+    }
+  }
+  .portfolio-list {
+    // transform: translateX(-50%);
+    li {
+      display: inline-block;
+      margin-right: 20px;
+      &:last-child {
+        margin-right: 0;
+      }
+      a {
+        font-size: 1.8rem;
+      }
+    }
+  }
+}
+
+@include breakpoint(1200px) {
+  .main-title {
+    h3 {
+      font-size: 3.5rem;
+    }
+    span {
+      font-size: 7rem;
+    }
+  }
+  .portfolio-list {
+    li {
+      a {
+        font-size: 3rem;
+      }
+    }
+  }
 }

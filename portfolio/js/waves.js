@@ -42,11 +42,11 @@
           U.extendsOption(options, new_options);
         }
 
-        console.log('target: ', target);
-        console.log('target_obj: ', target_obj);
         createWaveElement();
         setWaveStyle();
         bind();
+        console.log('target: ', target);
+        console.log('target_obj: ', target_obj);
       }
       /**
        * @method bind
@@ -131,21 +131,23 @@
         var wave_box_color = options.wave_box_color,
             wave_colors = options.wave_colors,
             new_wave_box_style = {
-              background: wave_box_color 
+              'background': wave_box_color 
             };
 
         // wave-box style extends new style
-        U.extendsOption(wave_box.style, new_wave_box_style);
+        // U.extendsOption(wave_box.style, new_wave_box_style);
+        U.setComputedStyle(wave_box.style, new_wave_box_style);
 
         for(var i = 0, len = waves.length; i < len; i++) {
           var wave = waves[i];
           var new_wave_style = {
-            background: wave_colors[i],
-            animationDuration: wave_speed + 'ms'
+            'background': wave_colors[i],
+            'animation-duration': wave_speed + 'ms'
           }
           // console.log(new_wave_style);
           wave_speed += wave_pulse;
-          U.extendsOption(wave.style, new_wave_style);
+          // U.extendsOption(wave.style, new_wave_style);
+          U.setComputedStyle(wave.style, new_wave_style);
         }
       }
       /**
@@ -156,7 +158,7 @@
       function setWaveSize() {
 
         var wave_box_style = U.getComputedStyle(wave_box);
-            console.log('setWavesize: ', wave_box);
+        
         var wave_box_width = parseInt(wave_box_style.width, 10),
             wave_box_height = parseInt(wave_box_style.height, 10),
             wave_box_size = 0;
@@ -170,11 +172,11 @@
         for(var i = 0, len = waves.length; i < len; i++) {
           var _wave = waves[i];
           var new_wave_style = {
-            width: wave_box_size + 'px',
-            height: wave_box_size + 'px',
-            marginLeft: -(wave_box_size / 2)  + 'px'
+            'width': wave_box_size + 'px',
+            'height': wave_box_size + 'px',
+            'margin-left': -(wave_box_size / 2)  + 'px'
           }
-          U.extendsOption(_wave.style, new_wave_style);
+          U.setComputedStyle(_wave.style, new_wave_style);
         } 
       }
 

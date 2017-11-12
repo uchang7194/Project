@@ -57,7 +57,39 @@
 
       return global.getComputedStyle(element);
     }
+    /**
+     * @method setComputedStyle
+     * @description element의 스타일을 정의하는 함수.
+     * @param el_style Element의 style 객체
+     * @param styles {} 스타일의 키와 값이 있는 객체
+     */ 
+    
+    var setComputedStyle = function(el_style, styles) {
+      var prop = null;
 
+      for(prop in styles) {
+        if( styles.hasOwnProperty(prop) ) {
+          if( checkIE() ) {
+            el_style.setAttribute(prop, styles[prop]);
+          } else {
+            el_style.setProperty(prop, styles[prop]);
+          }
+        }
+      }
+    }
+    /**
+     * @method checkIE
+     * @description 브라우저가 IE인지 아닌지 판별하는 함수.
+     */ 
+    var checkIE = function() {
+      var agent = navigator.userAgent.toLowerCase();
+      if ( (navigator.appName == 'Netscape' && navigator.userAgent.search('Trident') != -1) || (agent.indexOf("msie") != -1) ) {
+        return true;
+      }
+      else {
+        return false;
+      }   
+    }
     return {
       // VALIDATION
       typeValidation: typeValidation,
@@ -65,7 +97,9 @@
       // EXTENDS
       extendsOption: extendsOption,
       // GET
-      getComputedStyle: getComputedStyle
+      getComputedStyle: getComputedStyle,
+      // SET
+      setComputedStyle: setComputedStyle
     }
   }();
 

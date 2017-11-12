@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "watch": "node-sass -w scss/ -o css/ --output-style compressed --source-map true"
+    "watch": "node-sass -w scss/ -o css/ --output-style expanded --source-map true"
   },
   "author": "",
   "license": "ISC"

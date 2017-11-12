@@ -1,9 +1,12 @@
-@import './reset';
-@import './nomalize';
-@import './valiable';
-@import './utils/mixin';
+@import './modules/animation';
+@import './modules/valiable';
+@import './modules/classes';
+@import './modules/reset';
+@import './modules/nomalize';
+@import './modules/mixin';
 
 @import './modules/wave/wave';
 
+@import './modules/component/common';
 @import './modules/component/main';
 @import './modules/component/portfolio'; 

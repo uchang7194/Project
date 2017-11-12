@@ -1,3 +1,264 @@
-html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}table{border-collapse:collapse;border-spacing:0}button{padding:0;background:transparent}html{font-size:10px}body{font-size:1.4rem}.wave-box{position:absolute;top:0;left:0;width:100%;height:100%;overflow:hidden;transform:translate3d(0, 0, 0);z-index:-1}.wave-box .wave{opacity:.4;position:absolute;bottom:100px;left:50%;transform-origin:50% 48%;border-radius:43%;animation:drift 3000ms infinite linear}@keyframes drift{from{transform:rotate(0deg)}from{transform:rotate(360deg)}}.main{position:relative;height:100vh}.portfolio{position:relative;height:100vh}
+@keyframes drift {
+  from {
+    transform: rotate(0deg);
+  }
+  from {
+    transform: rotate(360deg);
+  }
+}
+
+.a11y-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  clip: rect(0, 0, 0, 0);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+  margin: -1px;
+}
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+button {
+  padding: 0;
+  background: transparent;
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  font-size: 1.4rem;
+  background: #f7f7f7;
+}
+
+.wave-box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  z-index: -1;
+}
+
+.wave-box .wave {
+  opacity: .4;
+  position: absolute;
+  bottom: 100px;
+  left: 50%;
+  border-radius: 43%;
+  -o-transform-origin: 50% 48%;
+  -ms-transform-origin: 50% 48%;
+  -moz-transform-origin: 50% 48%;
+  -webkit-transform-origin: 50% 48%;
+  -o-animation: drift 3000ms infinite linear;
+  -ms-animation: drift 3000ms infinite linear;
+  -moz-animation: drift 3000ms infinite linear;
+  -webkit-animation: drift 3000ms infinite linear;
+}
+
+@keyframes drift {
+  from {
+    transform: rotate(0deg);
+  }
+  from {
+    transform: rotate(360deg);
+  }
+}
+
+.wrapper {
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 426px) {
+  .wrapper {
+    padding: 0 20px;
+  }
+}
+
+.main {
+  position: relative;
+  height: 100vh;
+  font-family: 'Spectral SC', serif;
+}
+
+.main-title {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  width: 100%;
+  text-align: center;
+  transform: translateX(-50%);
+}
+
+.main-title h3 {
+  font-weight: bolder;
+  letter-spacing: -0.025em;
+  color: #303030;
+  text-shadow: 2px 2px #d5d5d5;
+}
+
+.main-title span {
+  font-size: 3.5rem;
+  letter-spacing: 0.08em;
+}
+
+.portfolio-list {
+  position: absolute;
+  bottom: 45%;
+  transform: translate(-50%, 50%);
+  left: 50%;
+  width: 100%;
+  text-align: center;
+}
+
+.portfolio-list li a {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  padding: 10px 15px;
+  color: #303030;
+  text-decoration: none;
+  text-transform: capitalize;
+  text-align: center;
+  text-shadow: 1px 1px rgba(255, 255, 255, 0.4);
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px 3px #ddd;
+}
+
+.portfolio-list li a .wave {
+  bottom: 0;
+}
+
+@media screen and (max-width: 426px) {
+  .main-title h3 {
+    font-size: 1.8rem;
+  }
+  .main-title span {
+    font-size: 3rem;
+  }
+  .portfolio-list li {
+    margin-bottom: 20px;
+  }
+  .portfolio-list li:last-child {
+    margin-bottom: 0;
+  }
+  .portfolio-list li a {
+    font-size: 1.6rem;
+  }
+}
+
+@media screen and (min-width: 427px) and (max-width: 768px) {
+  .main-title h3 {
+    font-size: 2rem;
+  }
+  .main-title span {
+    font-size: 4rem;
+  }
+  .portfolio-list li {
+    display: inline-block;
+    margin-right: 20px;
+  }
+  .portfolio-list li:last-child {
+    margin-right: 0;
+  }
+  .portfolio-list li a {
+    font-size: 1.75rem;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .main-title h3 {
+    font-size: 2.15rem;
+  }
+  .main-title span {
+    font-size: 4.3rem;
+  }
+  .portfolio-list li {
+    display: inline-block;
+    margin-right: 20px;
+  }
+  .portfolio-list li:last-child {
+    margin-right: 0;
+  }
+  .portfolio-list li a {
+    font-size: 1.8rem;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .main-title h3 {
+    font-size: 3.5rem;
+  }
+  .main-title span {
+    font-size: 7rem;
+  }
+  .portfolio-list li a {
+    font-size: 3rem;
+  }
+}
+
+.portfolio {
+  position: relative;
+  height: 100vh;
+}
 
 /*# sourceMappingURL=stylesheets.css.map */
