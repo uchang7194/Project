@@ -7,15 +7,23 @@
 
   function Wave(target, new_options) {
 
+    var target_obj = null,
+        wave_box = null,
+        waves = [];      
+
     this.settings = function(){
-      var target_obj = null,
-          wave_box = null,
-          waves = [];      
+      
 
       var options = {
         wave_box_color: '#feb47b',
         wave_speed: 3000,
         wave_pulse: 1500,
+        wave_box_size: 1,
+        wave_box_position: {
+          top: '0',
+          left: '50%',
+          transform: 'translateX(-50%)'
+        },
         wave_colors: [
           '#dce35b',
           '#45b649',
@@ -157,35 +165,49 @@
        */
       function setWaveSize() {
 
-        var wave_box_style = U.getComputedStyle(wave_box);
-        
+        var wave_box_style = U.getComputedStyle(wave_box),
+            wave_box_size = options.wave_box_size;
+
         var wave_box_width = parseInt(wave_box_style.width, 10),
             wave_box_height = parseInt(wave_box_style.height, 10),
-            wave_box_size = 0;
+            wave_box_aspect = wave_box_height / wave_box_width,
+            wave_box_total_size = 0,
+            new_wave_box_style = options.wave_box_position;
+            
+        console.log('wave_box_width: ', wave_box_width);
+        U.setComputedStyle(wave_box.style, new_wave_box_style);
 
         if( wave_box_width >= wave_box_height ) {
-          wave_box_size = wave_box_width * 1.2;
+          wave_box_total_size = wave_box_width / wave_box_aspect * wave_box_size;
         } else {
-          wave_box_size = wave_box_height * 1.2;
+          wave_box_total_size = wave_box_height / wave_box_aspect * wave_box_size;
         }
-        
+        console.log('wave_box_total_size: ', wave_box_total_size);
         for(var i = 0, len = waves.length; i < len; i++) {
           var _wave = waves[i];
           var new_wave_style = {
-            'width': wave_box_size + 'px',
-            'height': wave_box_size + 'px',
-            'margin-left': -(wave_box_size / 2)  + 'px'
+            'width': wave_box_total_size + 'px',
+            'height': wave_box_total_size + 'px',
+            'margin-left': -(wave_box_total_size / 2)  + 'px',
           }
           U.setComputedStyle(_wave.style, new_wave_style);
         } 
       }
-
       return {
         init: init
       }
     }();
 
+    /**
+     * @function getWaveBox
+     * @description wave_box element를 반환하는 함수.
+     */
+    this.getWaveBox = function() {
+      return wave_box;
+    }
+
     this.settings.init(target, new_options);
+    
   };
 
   global.Wave = Wave;

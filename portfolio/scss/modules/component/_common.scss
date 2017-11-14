@@ -1,9 +1,29 @@
 .wrapper {
+  position: relative;
+  
+}
+.wrapper-inner {
+  position: relative;
+  padding-left: $default-padding-size;
+  padding-right: $default-padding-size;
+  z-index: 10;
   box-sizing: border-box;
+}
+.content-wrapper {
+  // overflow: hidden;
+}
+section {
+  position: relative;
 }
 
 @include mobile {
   .wrapper {
     padding: 0 20px;
+  }
+}
+@include desktop {
+  .wrapper-inner {
+    max-width: 1150px;
+    margin: 0 auto;
   }
 }

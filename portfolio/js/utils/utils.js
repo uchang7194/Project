@@ -25,6 +25,7 @@
      */
     var isElement = function(el) {
       
+      console.log('el', el);
       if( typeValidation(el, 'object') ) {
         throw el + 'is not Object';
       }
@@ -78,6 +79,17 @@
       }
     }
     /**
+     * @method removeElement
+     * @description element를 삭제하는 함수.
+     * @param parent 삭제할 요소의 부모 element
+     * @param child 삭제할 요소
+     * @returns Element 삭제한 요소
+     */
+    var removeElement = function(parent, child) {
+      return parent.removeChild(child);
+    }
+    
+    /**
      * @method checkIE
      * @description 브라우저가 IE인지 아닌지 판별하는 함수.
      */ 
@@ -99,7 +111,9 @@
       // GET
       getComputedStyle: getComputedStyle,
       // SET
-      setComputedStyle: setComputedStyle
+      setComputedStyle: setComputedStyle,
+      // Element
+      removeElement: removeElement
     }
   }();
 

@@ -83,6 +83,7 @@ html {
 body {
   font-size: 1.4rem;
   background: #f7f7f7;
+  overflow-x: hidden;
 }
 
 .wave-box {
@@ -91,18 +92,12 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  overflow: hidden;
-  -webkit-transform: translate3d(0, 0, 0);
-  -moz-transform: translate3d(0, 0, 0);
-  -ms-transform: translate3d(0, 0, 0);
-  -o-transform: translate3d(0, 0, 0);
   z-index: -1;
 }
 
 .wave-box .wave {
   opacity: .4;
   position: absolute;
-  bottom: 100px;
   left: 50%;
   border-radius: 43%;
   -o-transform-origin: 50% 48%;
@@ -115,22 +110,32 @@ body {
   -webkit-animation: drift 3000ms infinite linear;
 }
 
-@keyframes drift {
-  from {
-    transform: rotate(0deg);
-  }
-  from {
-    transform: rotate(360deg);
-  }
+.wrapper {
+  position: relative;
 }
 
-.wrapper {
+.wrapper-inner {
+  position: relative;
+  padding-left: 20px;
+  padding-right: 20px;
+  z-index: 10;
   box-sizing: border-box;
+}
+
+section {
+  position: relative;
 }
 
 @media screen and (max-width: 426px) {
   .wrapper {
     padding: 0 20px;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .wrapper-inner {
+    max-width: 1150px;
+    margin: 0 auto;
   }
 }
 
@@ -161,20 +166,22 @@ body {
   letter-spacing: 0.08em;
 }
 
-.portfolio-list {
-  position: absolute;
-  bottom: 45%;
-  transform: translate(-50%, 50%);
+.gnb {
+  position: fixed;
+  top: 0;
   left: 50%;
   width: 100%;
+  padding: 15px 0;
+  z-index: 999;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.4);
   text-align: center;
 }
 
-.portfolio-list li a {
+.gnb li a {
   position: relative;
   display: block;
   overflow: hidden;
-  padding: 10px 15px;
   color: #303030;
   text-decoration: none;
   text-transform: capitalize;
@@ -184,7 +191,7 @@ body {
   box-shadow: 2px 2px 5px 3px #ddd;
 }
 
-.portfolio-list li a .wave {
+.gnb li a .wave {
   bottom: 0;
 }
 
@@ -195,14 +202,16 @@ body {
   .main-title span {
     font-size: 3rem;
   }
-  .portfolio-list li {
-    margin-bottom: 20px;
+  .gnb li {
+    display: inline-block;
+    margin-right: 20px;
   }
-  .portfolio-list li:last-child {
-    margin-bottom: 0;
+  .gnb li:last-child {
+    margin-right: 0;
   }
-  .portfolio-list li a {
-    font-size: 1.6rem;
+  .gnb li a {
+    font-size: 1.4rem;
+    padding: 5px 8px;
   }
 }
 
@@ -213,15 +222,16 @@ body {
   .main-title span {
     font-size: 4rem;
   }
-  .portfolio-list li {
+  .gnb li {
     display: inline-block;
     margin-right: 20px;
   }
-  .portfolio-list li:last-child {
+  .gnb li:last-child {
     margin-right: 0;
   }
-  .portfolio-list li a {
+  .gnb li a {
     font-size: 1.75rem;
+    padding: 7px 12px;
   }
 }
 
@@ -232,15 +242,16 @@ body {
   .main-title span {
     font-size: 4.3rem;
   }
-  .portfolio-list li {
+  .gnb li {
     display: inline-block;
     margin-right: 20px;
   }
-  .portfolio-list li:last-child {
+  .gnb li:last-child {
     margin-right: 0;
   }
-  .portfolio-list li a {
+  .gnb li a {
     font-size: 1.8rem;
+    padding: 10px 15px;
   }
 }
 
@@ -251,14 +262,114 @@ body {
   .main-title span {
     font-size: 7rem;
   }
-  .portfolio-list li a {
-    font-size: 3rem;
+  .gnb li a {
+    font-size: 2rem;
+  }
+}
+
+.section.intro {
+  color: #303030;
+}
+
+.section.intro figure .intro-img-box {
+  position: relative;
+  border-radius: 50%;
+  border: 2px solid #ddd;
+  overflow: hidden;
+}
+
+.section.intro figure .intro-img-box img {
+  position: absolute;
+  top: -20px;
+  left: 0;
+  width: 100%;
+  height: auto;
+}
+
+.section.intro figure figcaption {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.section.intro figure .introduce {
+  font-size: 1.6rem;
+  font-style: italic;
+  color: #888;
+}
+
+.section.intro .skills {
+  margin-top: 45px;
+  text-align: center;
+}
+
+.section.intro .skills h3 {
+  margin-bottom: 20px;
+  font-size: 2.5rem;
+  font-weight: bolder;
+  text-shadow: 1px 1px rgba(255, 255, 255, 0.4);
+}
+
+.section.intro .skills li {
+  display: inline-block;
+}
+
+.section.intro .skills a {
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+  margin: 7px 10px 0 0;
+  color: #303030;
+  text-decoration: none;
+  text-align: center;
+  text-shadow: 1px 1px rgba(255, 255, 255, 0.4);
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px 3px #ddd;
+  overflow: hidden;
+}
+
+.section.intro .skills a .wave {
+  bottom: 0;
+}
+
+.section.intro .intro-skills-description {
+  margin-top: 45px;
+  padding: 7px 15px;
+  background: rgba(255, 255, 255, 0.4);
+  text-align: center;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+}
+
+.section.intro .intro-skills-description p {
+  line-height: 1.75;
+}
+
+@media screen and (max-width: 426px) {
+  .section.intro figure .intro-img-box {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (min-width: 427px) and (max-width: 768px) {
+  .section.intro figure .intro-img-box {
+    width: 250px;
+    height: 250px;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .section.intro figure .intro-img-box {
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
   }
 }
 
 .portfolio {
   position: relative;
-  height: 100vh;
 }
 
 /*# sourceMappingURL=stylesheets.css.map */
